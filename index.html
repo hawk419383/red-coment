@@ -14,13 +14,75 @@
           color: rgb(207, 175, 29);
           text-decoration:  none;
         }
+        .wrap
+        {
+            width: 960px;
+            margin: 10px;
+            display: flex;
+            
+        }
+        .item
+        {
+            width: 150px;
+            margin: 10px;
+            position: relative;
+        }
+        .txt
+        {
+            padding: 10px;
+            font-size: 10px;
+            position: absolute;
+            
+            bottom:0;
+            left: 0;
+            right: 0;
+            background-color: black;
+            opacity: 0;
+            /* transform: scale(0) rotate(540deg); */
+            transition: 1s;
+           
+        }
+       
+       .txt:hover
+       {
+           opacity: .7;
+       }
     </style>
 </head>
 <body>
     <h1> 嗨你好</h1>
-    <div>
-    <a href="310/作業 小學課表.html">作業:課表</a>
-    </div>
-    
+    <div class="wrap">
+        <div class="item">
+         <div class="pic">
+                 <img src="https://4.bp.blogspot.com/-fJ1DxG95rYY/V7_FQNL3AaI/AAAAAAAAAT8/rKwFnpIdY7k-VOVeAJ75TGYbRDPVIPFkACPcB/s1600/%25E5%259C%2596%25E6%259B%25B8%25E9%25A4%25A8%25E8%25AA%25B2%25E8%25A1%25A8.png" alt="">
+            </div>
+            <div class="txt">
+                
+                <a href="310/作業 小學課表.html"><h3>作業:課表</h3></a>
+            </div>     
+        </div>
+        <div class="item">
+            <div class="pic">
+                    <img src="" alt="">
+               </div>
+               <div class="txt">
+                   
+                   <a href=""><h3></h3></a>
+               </div>     
+           </div>
+     </div>
+     <div class="item">
+        <div class="pic">
+                <img src="" alt="">
+           </div>
+           <div class="txt">
+               
+               <a href=""><h3></h3></a>
+           </div>     
+       </div>
+ </div>
+  
+</div>
 </body>
+
 </html>
