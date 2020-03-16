@@ -12,13 +12,10 @@
             
 
         }
-        a {
-            color: white;
-            font-size: 20px;
-        }
+        
         div{
             width: auto;
-            background-color: white;
+            
             }
         .firstline{
             height: 100px;
@@ -49,6 +46,7 @@
             position: sticky;
             top: 0px;
             z-index: 1;
+            background-color: white;
         }
         .kaedone .item{
             margin: auto;
@@ -75,15 +73,83 @@
             
 
         }
- 
+        .secondline{
+            width: 100%;
+            background-color: yellow;
+            display: flex;
+            flex-wrap: ;
+            
+        }
+        .secondline .img1{
+            width: 70%;
+            height: auto;
+            background-color: rgb(255, 255, 255);
+           
+           
+        }
+        .secondline img{
+            width: 100%;
+            vertical-align: bottom;
+            
 
- 
+        }
+        .secondline .text{
+            width: 40%;
+            background-color: rgb(255, 255, 255);
+            display: flex;
+            flex-wrap: wrap;
+            position: relative;
+        }
+        .text .t1{
+            width: 100%;
+            height: 250px;
+            background-color: rgb(255, 255, 255);
+            font-size: 7rem;
+            position: absolute;
+            left: 30px;
+            top: 100px;
+            bottom: 300px;
+            margin: auto;
+        }
+        .text .t2{
+            width: 90%;
+            height: 150px;
+            background-color: rgb(255, 255, 255);
+            font-size: 3rem;
+            color: yellow;
+            position: absolute;
+            top: 370px;
+            left: 30px;
+            bottom: 150px;
+            margin: auto;
+        }
+        .text .fakebuttom{
+            width: 100%;
+            height: 30%;
+            position: absolute;
+            top:600px;
+            left: 30px;
+            bottom: 10px;
+            margin: auto;
+            
+            
+        }
+        .text .fakebuttom a{
+            text-decoration: none;
+            background-color: #000000;
+            color: #ffff;
+            padding: 20px;
+            padding-left: 40px;
+            padding-right: 40px;
+            border-radius: 10px;
+            font-size: 2rem;
+        }
         .thirdline{
             background: -webkit-linear-gradient(rgb(209, 209, 209),rgb(248, 246, 246));
             
         }
 .select{
-    height: 1000px;
+    padding-top: 100px;
     width: auto;
     display: flex;
     background-color: rgb(255, 255, 255);
@@ -112,79 +178,87 @@
 }
 .quadline{
     width: 80%;
-    margin: auto;
     background-color: rgb(255, 255, 255);
+    height: auto;
     display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
+    margin: auto;
+    
     
 }
-.veg1{
-    width: 600px;
+.firstitems{
+    width: 50%;
+    background-color: rgb(255, 255, 255);
     position: relative;
-    vertical-align: bottom;
-    
 }
-.veg1 img{
+.firstitems img{
     width: 100%;
-    padding-left: 30px;
-}
-.veg23{
-    width: 700px;
-    background-color: #ffffff;
     
-    width: auto;
+    background-color: cyan;
+    
+
+}
+ .firstitems .bestquality{
+    position: absolute;
+    bottom: 200px;
+    left: 150px;
+    
+   
+   
+}
+
+.seconditem{
+    width: 50%;
     display: flex;
     flex-direction: column;
+    margin-left: 45px;
     justify-content: space-between;
 }
-.veg23 > img{ 
-    vertical-align: bottom;
-
-}
- .veg1 .title1 {
-     background-color: transparent;
-    color: #ffffff;
-    position: absolute;
-    bottom: 100px;
-    left: 100px;
-    top: 590px;
-    margin: auto;
-    font-size: 30px;
-    padding: 20px;
-}
-.veg2{
+.seconditem .redveg{
+    width: 100%;
     position: relative;
 }
-.veg2 .title2{
-    background-color: transparent;
-    color: #fff;
-    position: absolute;
-    font-size: 30px;
-    bottom: 30px;
-    left: 30px;
-    top: 200px;
-    margin: auto;
+.seconditem .redveg img{
+    width: 100%;
 }
-.veg3{
+.seconditem .redveg .hotdeals{
+    position: absolute;
+    bottom: 150px;
+    left: 90px;
+    
+}
+.seconditem .orange{
+    width: 100%;
     position: relative;
-
 }
-.veg3 .title3{
-    background-color: transparent;
-    color: #fff;
+.seconditem .orange img{
+    width: 100%;
+}
+.seconditem .orange .hurry{
     position: absolute;
+    bottom: 250px;
+    left: 90px;
+    
+}.quadline h2{
+    font-size: 50px;
+    
+    color: white;
+}
+.quadline p {
+    color: white;
     font-size: 30px;
-    bottom: 30px;
-    left: 30px;
-    top: 100px;
-    margin: auto;
-    padding: 10px;
+}
+.quadline h3{
+    color:  white;
+    font-size: 40px;
+}
+.quadline a{
+    color: white;
+    font-size: 40px;
+    x;
+}
 
-}
-.title3 p{
-    font-size: 10px;
-}
+   
+
 
 </style>
 </head>
@@ -217,15 +291,16 @@
         
     </div>
     <div class="secondline">
-        <div class="img1"><img src="3-13pic/asset 62 (14).jpg" alt=""></div>
+        <div class="img1">
+            <img src="3-13pic/asset 62 (15).jpg" alt="">
+        </div>
        <div class="text">
-           <div class="txt">
-           <h2 class="t1"> Fresh and <br> Delicious</h2>
-           <h3 class="t2">ALL YEAR<br>ROUND!</h3>
-            <div class="btn2"><a  href="#">READ MORE</a></div>
+           <div class="t1">Fresh and Delicious</div>
+           <div class="t2">ALL YEAR ROUND!</div>
+           <div class="fakebuttom"><a href="">READ MORE</a></div>
         </div>  
             
-        </div>
+     </div>
     </div>
     <div class="thirdline">
         <div class="select">
@@ -237,29 +312,39 @@
       <span class="dairy"><img src="3-13pic/asset 62 (55).jpg" alt=""><p>Dairy</p></span>
     </div>
     </div>
-    <div>
-        <div class="quadline">
-            <div class="veg1"><img src="3-13pic/asset 62 (56).jpg" alt="">
-                <div class="title1"> <h3>Best Quality Products</h3>
-                <a href="">Shop now</a></div>
-               
+    <div class="quadline">
+        <div class="firstitems">
+            <img src="3-13pic/asset 62 (56).jpg" alt="">
+            <div class="bestquality">
+                <h2>Best Quality Products</h2>
+                <a href="">Shop now</a>
+            </div>
+        </div>
+        <div class="seconditem">
+            <div class="redveg">
+                <img src="3-13pic/asset 62 (57).jpg" alt="">
+                <div class="hotdeals">
+                    <h2>Hot Deals:</h2>
+                    <h3>CRAZY PRICE $2.99</h3>
+                    <a href="">Shop now</a>
+                </div>
+            </div>
 
-            </div>
-            <div class="veg23">
-                <div class="veg2"><img src="3-13pic/asset 62 (57).jpg" alt="">
-                    <div class="title2"><h3>Hot Deals:<br>CRAZY PRICE $2.99</h3><a href="">Shop now</a>
-                    </div>
-                </div>
-                <div class="veg3"><img src="3-13pic/asset 62 (58).jpg" alt="">
-                    <div class="title3"><h3>HURRY UP!</h3>
-                        <P>Don't miss your chance to be the first!</P>
-                        <a href="">Shop now</a>
-                    </div>
+             <div class="orange">
+                 <img src="3-13pic/asset 62 (58).jpg" alt="">
+                 <div class="hurry">
+                     <h2>HURRY UP!</h2>
+                    <p>Don't miss your chance to be the first!</p>
+                    <a href="">Shop now</a>
                 </div>
             </div>
-         </div>
+
+        </div>
+
+
+
+
     </div>
-    
        
      
    
