@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/9a93cb04a1.js" crossorigin="anonymous"></script>
+  <style>
+      *{
+          margin: 0;
+          padding: 0;
+          list-style: none;
+      }
+      .top-contain{
+          width: auto;
+          position: relative;
+
+
+      }
+      .log-wrap{
+          width: 100% ;
+          position: absolute;
+          top: 30px;
+          z-index: 3;
+          margin: auto;
+      }
+      .logo-width{
+          width: 1600px;
+          margin: auto;
+          display: flex;
+          justify-content: space-evenly;
+                   
+      }
+      
+      .nav-select{
+          width: auto;
+      }
+      .select-wrap{
+          padding:0 200px;
+          display: flex;
+          margin-top: auto;
+         
+      }
+      .log-wrap .select-wrap{
+         
+          text-align: right;
+      }
+    .log-wrap .select-wrap a{
+         padding: 30px;
+         text-decoration: none;
+         color: #fff;
+         font-family: fantasy;
+         font-size: 14px;
+         
+     }
+     .log-wrap .select-wrap .home{
+         color: #4fdcf5;
+     }
+     .log-wrap .select-wrap a:hover{
+         color: #4fdcf5;
+     }
+     .searh{
+         width: 200px;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         font-size: 19px;
+         
+         color: white;
+     }
+     .main-pic{
+         width: 100%;
+         
+     }
+     .main-pic img{
+         width:100%;
+         height: 950px;
+         vertical-align: bottom;
+         filter: brightness(.5);
+     }
+     .construct {
+         width: 100%;
+         position: absolute;
+         margin: auto;
+         top: 350px;
+         bottom: 100px;
+         text-align: center;
+         
+     }
+     .construct h3{
+         width:auto ;
+         font-size: 120px;
+         color: white;
+         padding: 20px;
+     }
+     .construct h4{
+         font-size: 30px;
+         color: #fff;
+         padding-bottom: 50px;
+
+     }
+     .construct a{
+         color: white;
+         background-color: #4fdcf5;
+         text-decoration: none;
+         padding: 20px 40px;
+     }
+     .service{
+         width: 100%;
+         padding: 80px 0 60px 0 ;
+         background-color: rgb(255, 255, 255);
+         
+     }
+     .ourservice{
+         width: 500px;
+         margin: auto;
+         text-align: center;
+         font-size: 30px;
+         position: relative;
+         
+     }
+     .ourservice h3::before{
+         content: " ";
+         padding: 1px 50px;
+         top: -10px;
+         left: 200px;
+         right: 200px;
+         margin: auto;
+         position: absolute;
+         background-color: cyan;
+     }
+     .service-wrap1{
+         width: 1460px;
+         display: flex;
+         margin: auto;
+         font-size: 18px;
+         padding-top: 30px;
+         background-color: rgb(255, 255, 255);
+     }
+     .service-wrap1 div{
+         width: 300px;
+         margin: auto;
+         display: flex;
+         position: relative;
+         top: 0px
+     }
+.service-wrap1 .build{
+    top: 14px;
+}
+
+     .service-wrap1 div i{
+         font-size: 50px;
+         
+         position: absolute;
+         margin-left: -70px;
+     }
+     .service-wrap2{
+         width: 1460px;
+         display: flex;
+         margin: auto;
+         font-size: 18px;
+         padding-top: 40px;
+         background-color: rgb(255, 255, 255);
+         padding-bottom: 70px;
+     }
+     .service-wrap2 div{
+         width: 300px;
+         margin: auto;
+         display: flex;
+         position: relative;
+         top: 0px
+     }
+.service-wrap2 .design-build{
+    top: -10px;
+}
+
+     .service-wrap2 div i{
+         font-size: 50px;
+         
+         position: absolute;
+         margin-left: -70px;
+     }
+     .service-wrap1 div i{
+         color: rgb(75, 178, 204);
+     }
+     .service-wrap2 div i{
+         color: rgb(75, 178, 204);
+     }
+     .history{
+         width:100%;
+         background-color: #e4e2e2 ;
+         padding-top: 100px;
+         
+
+     }    
+     .our-history{
+         width: 1400px;
+         margin: auto;
+         display: flex;
+         padding-bottom: 60px;
+        
+     }
+     .our-history article{
+         padding-top: 50px;
+     }
+     .our-history article h3{
+         font-size: 30px;
+         padding: 20px 0 30px;
+         position: relative;
+     }
+     .our-history article h3::before{
+         content:"";
+         padding: 1px 28px;
+         top: 0px;
+         background-color: #4fdcf5;
+         position: absolute;
+     }
+     .our-history article h5{
+         font-size: 21px;
+         padding: 0 0 20px;
+     }
+     .our-history article p{
+         font-size: 19px;
+         padding:0 0 60px ;
+      }
+        
+     .our-history article a{
+         padding: 10px 20px;
+         background-color: #4fdcf5;
+         color: #fff;
+         text-decoration: none;
+     }
+     .our-history .old-man img{
+         width: 675px;
+         height: 487px;
+     }
+     .build-pic{
+         width: 100%;
+         display: flex;
+         flex-wrap: wrap;
+
+     }
+     .build-pic div{
+         width: 25%;
+         height: 400px;
+         position: relative;
+         margin: auto;
+         
+         
+     }
+     .build-pic div img{
+         width:100%;
+         
+         height: 100%; 
+         filter: brightness(.7);
+     }
+     .build-pic div .txt{
+         width: 100%;
+         height: 50px;
+         text-align: center;
+        
+         position: absolute;
+         top: 200px;
+
+
+     }
+     .build-pic div p{
+        
+        
+         font-size:30px;
+         color:#ffff;
+     }
+     .news-con{
+         width: auto;
+         padding: 100px;
+     }
+     .recent-news{
+         width: 500px;
+         margin: auto;
+         text-align: center;
+         font-size: 2em;
+         position: relative;
+         
+     }
+     .recent-news h3::before{
+         content: " ";
+         padding: 1px 30px;
+         top: -10px;
+         left: 200px;
+         right: 200px;
+         margin: auto;
+         position: absolute;
+         background-color: cyan;
+     }
+     .news-wrap{
+         width: 1500px;
+         margin: auto;
+         display: flex;
+         background-color: rgb(255, 255, 255);
+
+     }
+     .news-wrap div{
+         width: 30%;
+         margin: auto;
+     }
+     .news-wrap div img{
+        width: 100%;
+
+     }
+     .news-wrap div article a {
+         font-size: 20px;
+         color: #000000;
+         text-decoration: none;
+         
+
+     }
+     .news-wrap div article a h4{
+        padding: 20px 0 20px;
+     }
+     .news-wrap div article p{
+         font-size: 20px;
+     }
+     .read-more{
+         width: auto;
+         margin-top: 150px;
+         
+         text-align: center;
+         padding-bottom: 100px;
+        
+     }
+     .read-more a{
+         font-size: 20px;
+        padding: 20px 50px;
+        background-color: #4fdcf5;
+         color: #fff;
+         text-decoration: none;
+         border-radius: 5px;
+     }
+     .footer{
+         
+         background-color: rgba(27, 26, 54, 0.89);
+     }
+     .footer-item{
+        width: 1600px;
+        height: 400px;
+         margin: auto;
+         display: flex;
+         
+         
+     }
+      .footer-item div{
+          padding-top: 100px;
+         width: 400px;
+     }
+     .footer .item{ 
+         box-sizing: border-box;
+         padding: 100px 20px;
+         }
+     .footer .item h5{
+         padding-top: 30px;
+         padding-bottom: 20px;
+         font-size: 30px;
+         color: #ffffff;
+
+     }
+     .footer div article{
+         color: white;
+
+     }
+     .footer div article .home , a{
+         color: white;
+         text-decoration: none;
+         font-size: 20px;
+         padding: 10px 0; 
+
+     }
+     .footer div article .home , a:hover{
+         color: #4fdcf5;
+     }
+     .footer div  ul li a {
+         color: #4fdcf5;
+
+     }
+     .footer div  ul li a:hover{
+         color: white;
+     }
+     .footer div  ul .home a{
+         color: white;
+     }
+
+
+
+  </style>
+</head>
+<body>
+    
+    <header class="top-contain">
+        <div class="log-wrap">
+            <div class="logo-width">
+            <a class="logo" href=""><img src="manufax/asset 0.png" alt=""></a>
+            <div class="nav-select">
+                <nav class="select-wrap">
+                    <a class="home" href="">HOME</a>
+                    <a href="">ABOUT</a>
+                    <a href="">SERVICE</a>
+                    <a href="">PROJECTS</a>
+                    <a href="">BLOG</a>
+                    <a href="">CONTACTS</a>
+                </nav>
+            </div> 
+             <div class="searh"><i class="fas fa-search"></i></div>
+            </div>
+        </div>
+        <div class="main-pic">
+            <img src="manufax/asset 1.png" alt="">
+        </div>
+        <div class="construct">
+            <h3>CONSTRUCTION</h3>
+            <h4>SEE HOW A 10-STORIES TOWER'S BEING BUIKT.IN A TIME LAPSE!</h4>
+            <a href="">SEE OUR RECENT PROJECTS</a>
+        </div>
+    </header>
+    <div class="service">
+        <div class="ourservice"><h3>OUR SERVICES</h3></div>
+        <div class="service-wrap1">
+              <div class="build">
+                <i class="fas fa-home"></i>
+                 <article>
+                     <h4>BUILDING INFORMATION MODELING</h4>
+                     <p>Oftentimes physical and functional essence of any construction project needs to be represented digitally, in a 3D model format. In...</p>
+                 </article>
+              </div>
+              <div class="cons-service">
+                <i class="fab fa-codepen"></i>
+                <article>
+                    <h4>CONSTRUCTION SERVICES</h4>
+                    <p>Our customers love the pace/quality tempo that we show during each of the principal construction processes! We're comfortable with any...</p>
+                </article>
+              </div>
+              <div class="pre-cons">
+                <i class="fas fa-th"></i>
+                <article>
+                    <h4>PRE-CONSTRUCTION SERVICES</h4>
+                    <p>We take our time on initial planning before any construction begins, to balance all the financial and efficiency issues beforehand.This...</p>
+                </article>
+
+              </div>
+        </div>
+        <div class="service-wrap2">
+                <div class="design-build">
+                    <i class="fas fa-edit"></i>
+                    <article>
+                        <h4>DESIGN-BUILD</h4>
+                        <p>If a project is not too complex, we may hire a designer-builder type of contractor, to make the longevity of...</p>
+                    </article>
+
+                </div>
+                <div class="CONSTRUCTION-MANAGEMENT">
+                    <i class="far fa-building"></i>
+                    <article>
+                    <h4>CONSTRUCTION MANAGEMENT</h4>
+                    <p>Construction project management is essential. We're using the most time and iterations efficient life cycles for that.As you may know,...</p>
+                </article>
+
+                </div>
+                <div class="GENERAL-CONTRACTING">
+                    <i class="far fa-address-book"></i>
+                    <article>
+                        <h4>GENERAL CONTRACTING</h4>
+                        <p>We have a long list of professional contractors, whom our engineers and architects enjoy to work with on a majority...</p>
+                    </article>
+
+                </div>
+        </div>
+    </div>
+    <div class="history">
+        <div class="our-history">
+           
+            <article>
+                <h3>OUR HISTORY</h3>
+                <h5>OUR CONSTRUCTION COMPANY HAS BEEN FOUNDED 10 YEARS AGO, AT THE VERY PEAK OF THE BUILDING FRENZY IN THE US…</h5>
+                <p>Since then we’ve built hundreds of commercial, government and private buildings and facilities. It may not sound like a lot, but if you estimate the manpower, working hours, materials, planning and correlating that were all involved in completing each separate project, then our productivity is immense!</p>
+                <a href="">READ MORE</a>
+            </article>
+            <div class="old-man">
+                <img src="manufax/asset 4.png" alt="">
+            </div>
+        </div>
+            
+
+
+
+
+    </div>
+    <div class="build-pic">
+
+        <div><img src="manufax/asset 9.jpeg" alt="">
+            <div class="txt"><p>COMMERCIAL</p></div>
+        </div>
+        <div><img src="manufax/asset 10.jpeg" alt="">
+            <div class="txt"><p>CULTURAL/LIFESTYLE</p></div>
+        </div>
+        <div><img src="manufax/asset 11.jpeg" alt="">
+            <div class="txt"><p>DATA/TECHNOLOGY</p></div>
+        </div>
+        <div><img src="manufax/asset 12.jpeg" alt="">
+            <div class="txt"><p>EDUCATION</p></div>
+        </div>
+        <div><img src="manufax/asset 13.jpeg" alt="">
+            <div class="txt"><p>GOVERNMENT/MILITARY</p></div>
+        </div>
+        <div><img src="manufax/asset 14.jpeg" alt="">
+            <div class="txt"><p>HEALTHCARE</p></div>
+        </div>
+        <div><img src="manufax/asset 15.jpeg" alt="">
+            <div class="txt"><p>MANUFACTURING/INDUSTRIAL</p></div>
+        </div>
+        <div><img src="manufax/asset 16.jpeg" alt="">
+            <div class="txt"><p>WAREHOUSE/LOGISTICS</p></div>
+        </div>
+        
+    </div>
+    <div class="news-con">
+           <div class="recent-news"><h3>RECENT NEWS</h3></div>
+            
+    </div>
+        <div class="news-wrap">
+            <div class="future-hospital">
+                <img src="manufax/asset 5.jpeg" alt="">
+                <article>
+                    <a href="">
+                        <h4>FUTURE PROOFING HOSPITALS</h4>
+                    </a>
+                    <p>By improving the physical layout of hospitals and medical facilities, we can enhance and increase safety mechanisms, improve care, and…</p>
+                </article>
+            </div>
+            <div class="warehouse">
+                <img src="manufax/asset 6.jpeg" alt="">
+                <article>
+                    <a href="">
+                        <h4>BIKE PARTS WAREHOUSE, DE</h4>
+                    </a>
+                    <p>Delaware proved to be a very friendly place to work at… While invited there for completing a mid-sized warehouse for…</p>
+                </article>
+            </div>
+            <div class="hotel">
+                <img src="manufax/asset 7.jpeg" alt="">
+                <article>
+                    <a href="">
+                        <h4>JOY HOTEL & CASINO</h4>
+                    </a>
+                    <p>This hotel & casino complex is our most recent completed building… The whole structure that took us 6 months to…</p>
+                </article>
+            </div>
+        </div>
+        <div class="read-more">
+            <a href="">SEE ALL NEWS</a>
+        </div>
+        <div class="footer">
+            <div class="footer-item">
+                <div class="about-manufax">
+                    <img src="manufax/asset 0.png" alt="">
+                    <article><p>Construction’s core values have been shaped over more than 10 years of delivering the finest construction services to our clients. They stood to the test of time and these principles remain our bedrock lynchpins. We never tried to cut on either quality, the pace of work or any other construction aspect. We stay true to our full promise of efficiency!</p>
+                    </article>
+                </div>
+                <div class="item">
+                    <h5>NAVIGATION</h5>
+                    <ul>
+                        <li class="home"><a href="">Home</a></li>
+                        <li><a href="">About</a></li>
+                        <li><a href="">Services</a></li>
+                        <li><a href="">Projrcts</a></li>
+                        <li><a href="">Blogs</a></li>
+                        <li><a href="">Contacts</a></li>
+                        
+                    </ul>
+                </div>
+                <div class="item">
+                    <h5>RECENT COMMENTS</h5>
+                    <article>
+                        <a href="">The art and science of color planning for performance requirements</a>
+                        <p></p>
+                        <a href="">Future proofing hospitals</a>
+                        <p></p>
+                    </article>
+                </div>
+                
+                <div class="item">
+                    <h5>CONTACTS</h5>
+                    <article>
+                        <address>
+                            Address: 4578 Marmora Road, Glasgow, D04 89GR
+                        </address>
+                        <p>Phones:</p>
+                        <p>E-mail:</p>
+                    </article>
+                </div>
+
+            </div>
+        </div>
+
+</body>
+</html>
