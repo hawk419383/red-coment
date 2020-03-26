@@ -20,6 +20,11 @@
        .search-wrap{
            font-size: 1rem;
            padding: 15px 0;
+           display: flex;
+           justify-content: space-between;
+       }
+       .fa-bar{
+           padding: 0 50px 0 0;
        }
        .search-bar{
             
@@ -45,15 +50,313 @@
        }
        .hawk{
            margin-top: -50px;
+           padding-bottom: 50px;
        }
       
-       .mainpic  img{
-           width: 400px;
+       .mainpic 
+       {
+           width: 100%;
+           height: 0;
+           padding-bottom: 85%;
+           background-image: url("3-20hw/greeting_image.jpg");
+           background-size: cover;
+           background-position: center center;
+           position: relative;
+       }
+       .join-txt{
+           position: absolute;
+           color: white;
+           top: 10px;
+           left: 20px;
+
+       }
+       .mainpic a{
+           padding: 10px 20px;
+           bottom: 0;
+           position: absolute;
+           left: 45%;
+           
+           
+           
+       }
+       .art-item{
+           
+           text-align: center;
+       }
+       .art-item h5{
+           margin-bottom: 30px;
+           font-size: 2.5rem;
+       }
+       .hair-pic{
+           box-sizing: border-box;
+           padding: 10px;
+        width: 100%;
+           height: 0;
+           padding-bottom: 100%;
+           background-image: url("3-20hw/promo_block_img.jpg");
+           background-size: cover;
+           background-position: center center;
+           position: relative;
+
+       }
+       .hair-ext{padding-top: 60px;}
+       .hair-ext h3{
+           text-align: center;
+           padding: 30px 0;
+       }
+       .hair-pic article h4{
+           color: #ffffff;
+           font-size: 4rem;
+       }
+        .hair-pic article h5{
+            font-size: 2rem;
+        }
+        .hair-pic article a{
+            padding: 10px;
+            border: 2px solid #000000;
+            font-size: 1rem;
+            
+            
+        }
+        .hair-pic article p{
+            padding-bottom: 30px;
+        }
+       .hair-pic article{
+           color: #000;
+           position: absolute;
+           top: 100px;
+           text-align: center;
+           font-size: 1.7rem;
+           top: 30px;
+
+       }
+       .model-pic .row div{
+        
+          
+           margin-bottom: 40px;
+       }
+       .models div img{
+           width: 100%;
+          
+           
+       } 
+       .models div article{
+           padding: 91px;
+           text-align: center;
+           border: 1px solid #cccccc;
+
+       }
+       .models div article h5{
+           padding-bottom: 20px;
+           font-size: 1.1rem;
+       }
+       .models div .i1 a{
+        background-color: #000;
+           color: #ffff;
+           padding: 10px 20px;
+           
+       }
+       .models div article a{
+           border: 2px solid #000000;
+        background-color: rgb(255, 255, 255);
+           color: rgb(0, 0, 0);
+           padding: 10px 20px;
+          
+       }
+       .models div .i1{
+           background-color: rgb(247, 222, 222);
+       }
+       .product-con h3{
+           padding: 50px 10px;
+           margin: auto;
+       }
+       .product-item{
+           padding: 20px 0;
+           border: 1px solid #cccccc;
+       }
+       .product-item article{
+           padding: 20px;
+           text-align: center;
+       }
+       .product-item article h6{
+           padding: 10px 0;
+       }
+
+       .product-item article a{
+           padding: 10px 20px;
+           color: #ffff;
+           background-color: #000;
+       }
+       .news-title{
+           padding: 50px;
+           text-align: center;
+       }
+       .news-item{
+           padding: 20px 0;
+           border: 1px solid #cccccc;
+           margin: auto;
+       }
+       .news-item article{
+           padding: 20px;
+           text-align: center;
+       }
+       .news-item article h6{
+           padding: 10px 0;
+       }
+       .news-item article p{
+           padding-bottom: 20px;
+       }
+       .news-item article a{
+           padding: 10px 20px;
+           color: #ffff;
+           background-color: #000;
+       }
+       .follow{
+           padding: 70px 0;
+           text-align: center;
+       }
+       .subscribe-line h5{
+           text-align: center;
+          
+       }
+       .subscribe-line{
+           background-color: #5990f7;
+           text-align: center;
+           padding: 100px 0;
+       }
+       .sub button{
+           border: 2px solid #000000;
+           border-radius: 0;
+       }
+       .info a i{
+           padding: 10px;
+           background-color: #5990f7;
+
+       }
+       .footer{
+           padding: 40px 0;
+           background-color: #000036;
+           color: #fff;
            
        }
        
+       .footer article a{
+           background-color: #000036;
+           color: #ffffff;
+           
+       }
+       .final a{
+           color: #ffff;
+           background-color: #000;
+          
+       }
+       .final{
+           display: flex;
+           background-color: #000;
+           color: white;
+       }
+       .final article h6{
+           padding: 30px;
+       }
+       .gmap_canvas iframe{
+           width: 100%;
+       }
        
        
+       @media screen and (max-width: 768px){
+        .bread{
+           display: none;
+       }
+       }
+
+
+       
+       
+       @media screen and (min-width: 768px){
+           .models div{
+               padding: 0;
+           }
+           .models div article{
+           padding: 50px;
+           text-align: center;
+
+          }
+         .product-con .product-item img{
+              width: 100%;
+          }
+          .models-pic article{
+              height: 238px;
+          }
+          .logo .row{
+              position: relative;
+              
+
+          }
+          .logo nav{
+              position: absolute;
+              top: 95px;
+              right: -150px;
+          }
+          .mainpic 
+       {
+           margin-top: 50px;
+           width: 100%;
+           height: 0;
+           padding-bottom: 50%;
+           background-image: url("3-20hw/greeting_image.jpg");
+           
+           background-position: center center;
+           position: relative;
+       }
+       .mainpic a{
+           padding: 10px 20px;
+           bottom: 0;
+           position: absolute;
+           left: 45%;
+           right: 45%;
+           margin: auto;
+           
+       }
+       .hair-pic{
+           box-sizing: border-box;
+           padding: 10px;
+        width: 100%;
+           height: 0;
+           padding-bottom: 40%;
+           background-image: url("3-20hw/promo_block_img.jpg");
+           
+           background-position: center center;
+           position: relative;
+
+       }
+       .style-factory-menu{
+           display: none;
+       }
+       .bread{
+       padding: 30px;
+       background-color: #ffffff;
+       position: sticky;
+           top: 0px;
+           z-index: 6;
+           
+       
+      
+       
+       }
+       .bread-crmb{
+           display: flex; 
+       }
+       .bread-crmb h6{
+        font-size: 2rem;
+       }
+       .final-logo img{
+           width: 50%;
+       }
+       
+
+          
+
+       }
        
 
  
@@ -62,26 +365,26 @@
   </head>
   <body>
     <div class="topic container-fluid border-bottom">
-            <div class=" search-wrap row ">
-                <div class=" item col-3 "><i class="fas fa-bars "></i></div>
-                <div class="shop-car col text-right px-0">
+            <div class=" search-wrap col-10 mx-auto">
+                <div class="fa-bar"><i class="fas fa-bars "></i></div>
+                <div class="shop-car  col-10">
                     <a href="" class=""><i class="fas fa-shopping-cart"></i></a>
+                    <input id="search" type="text" placeholder="Search store" class="hint w-50"> 
+                    <button  class="  text-left " id="search-submit" type="submit" >
+                        <i class="fas fa-search "></i>
+                    </button>
                 </div>
-                <div class=" search-bar col text-right  ">
-                    <input id="search" type="text" placeholder="Search store" class="hint w-100  "> 
-                </div>
-                <button  class=" pr-4 text-left ml-auto" id="search-submit" type="submit" >
-                    <i class="fas fa-search "></i>
-                </button>
+              
+               
             </div>
         </div>
-    <div class="logo container">
+    <div class="logo container-fluid">
             <div class="row py-5">
-                <div class="logo-img col-10 mx-auto">
+                <div class="logo-img col-10 col-md-3 mx-auto">
                     <img src="3-20hw/logo.jpg" alt=""   class="d-block w-100 ">
                 </div>
-                <div class="w-100"></div>
-                <nav class="col-7  col-md-5 mx-auto  ">
+                
+                <nav class="col-7  col-md-4 mx-auto  ">
                     <a href=""><i class="fab fa-twitter"></i></a>
                     <a href=""><i class="fab fa-facebook-f"></i></a>
                     <a href=""><i class="fab fa-youtube"></i></a>
@@ -101,19 +404,328 @@
                         </select>
                 </div>
                 
+                
+                
             </div>
         </div>
-        
-        <div class=" hawk ">
+        <div class="container-fluid bread">
                 <div class="row ">
-                    <div class=" mainpic col-12  ">
-                        <img src="3-20hw/greeting_image.jpg" alt="best-deal" class=" ">
+        
+                    <div class="bread-crmb-wrap mx-auto my-auto">
+                        <nav class="col-12 bread-crmb ">
+                          
+                              <h6 class="breadcrumb-item"><a href="#">HOME</a></h6>
+                              <h6 class="breadcrumb-item"><a href="#">PRODUCTS</a></h6>
+                              <h6 class="breadcrumb-item"><a href="#">BLOG</a></h6>
+                              <h6 class="breadcrumb-item"><a href="#">SALE</a></h6>
+                              <h6 class="breadcrumb-item"><a href="#">ABOUT US</a></h6>
+                              <h6 class="breadcrumb-item"><a href="#">CONTACT US</a></h6>
+                             
+                            
+                          </nav>
+                        </div>
+                </div>
+            </div>        
+        <div class=" hawk ">
+                <div class=" row ">
+                    <div class=" mainpic col-12 ">
+                        <div class="join-txt"><h4>
+                            JOIN OUR DISCOUNT CLUB & SAVE 25% ON EVERYTHING!
+                        </h4></div>
+                        <a href="" class="mx-auto">JOIN NOW</a>
                     </div>
-                    
+                </div>
+        </div>    
+    <div class="container-fluid">
+            <div class="row ">
+                <article class=" art-item col-12 col-md-4">
+                    <h5>NEW ARRIVALS</h5>
+                    <p>SEE OUR LATEST MUST-HAVES</p>
+                </article>
+                <article class=" art-item col-12 col-md-4">
+                    <H5>WE LOVE</H5>
+                    <p>CHECK OUT STYLISH FAVORITES</p>
+                </article>
+                <article class=" art-item col-12 col-md-4">
+                    <h5>FREE SHIPPING</h5>
+                    <p>ON ALL 2016 COLLECTION</p>
+                </article>
+    
+            </div>
+     </div>
+     <div class=" container-xl hair-ext ">
+             <div class=" row">
+                 <div class=" hair-pic col-12 col-md-12 mx-auto ">
+                     <article>
+                         <h4><strong>HAIR</strong></h4>
+                         <h5>EXTENSIONS</h5>
+                         <p>ADD LENGTH & VOLUME IN SECONDS</p>
+                         <a href="">Read More</a>
+                     </article>   
+                 </div>
+                 <div class=" w-100 "></div>
+                 <h3 class=" col-9 mx-auto "><strong>BROWSE</strong> OUR CATEGORIES</h3>
+             </div>
+     </div>
+     <div class=" models container-xl ">
+             <div class="row">
+                 
+                     <div class="models-pic col-12 col-md-3 ">
+                         <img src="3-20hw/category1_c699b5ea-b75e-4185-9a8e-2a65b0fc3814_430x396_crop_top.jpg" alt="">
+                         <article class="i1">
+                             <h5><strong>MEN'S HAIR CARE</strong> </h5>
+                             <a href="">7 products</a>
+                         </article>
+
+                     </div>
+                     <div class="models-pic col-12 col-md-3 ">
+                         <img src="3-20hw/category2_430x396_crop_top.jpg" alt="">
+                        <article>
+                            <h5><strong>HAIR STYLING</strong> </h5>
+                            <a href="">13 product</a>
+                        </article>
+
+                     </div>
+                     <div class="models-pic col-12 col-md-3 ">
+                         <img src="3-20hw/category3_430x396_crop_top.jpg" alt="">
+                        <article>
+                            <h5><strong>HAIR HEALTH TREATMENT</strong> </h5>
+                            <a href="">9 product</a>
+                        </article>
+
+                     </div>
+                     <div class="models-pic col-12 col-md-3 ">
+                         <img src="3-20hw/category4_430x396_crop_top.jpg" alt="">
+                        <article>
+                            <h5><strong>HAIR CARE FOR KIDS</strong> </h5>
+                            <a href="">7 product</a>
+                        </article>
+
+                     </div>
+                
+                
+     
+     
+             </div>
+         </div>
+    <div class=" product-con container ">
+            <div class=" row ">
+                <h3><strong>PRODDUCTS</strong> ON SALE</h3>
+                <div class=" w-100 "></div>
+                <div class=" product-item col-11 col-md-3 mx-auto ">
+                    <img src=" 3-20hw/argan_oil_hair_mask_01_370x370_crop_top.jpg " alt=""class="d-block col-4 col-md-12 mx-auto">
+                    <article>
+                        <h6>Argan Oil Hair Mask</h6>
+                        <p><strong>$60.00</strong></p>
+                        <a class="add-to-cart" href="">Add to cart</a>
+                        
+                    </article>
+                </div>
+                <div class="product-item col-11 col-md-3 mx-auto">
+                    <img src="3-20hw/garnier_fructis_01_370x370_crop_top.jpg" alt=""class="d-block col-4 col-md-12 mx-auto">
+                    <article>
+                        <h6>Garniier Fructis</h6>
+                        <p>From <strong> $90.00</strong></p>
+                        <a class="add-to-cart" href="">Add to cart</a>
+                        
+                    </article>
+                </div>
+                <div class="product-item col-11 col-md-3 mx-auto ">
+                    <img src="3-20hw/herbal_essences_01_370x370_crop_top.jpg " alt=""class="d-block col-4 col-md-12 mx-auto">
+                    <article>
+                        <h6>Herbal Essences</h6>
+                        <p><strong>$80.00</strong></p>
+                        <a class="add-to-cart" href="">Add to cart</a>
+                        
+                    </article>
+                </div>
+                <div class="product-item col-11 col-md-3 mx-auto">
+                    <img src="3-20hw/l_oreal_paris_studio_line_1_370x370_crop_top.jpg" alt=""class="d-block col-4 col-md-12 mx-auto">
+                    <article>
+                        <h6>L'Oreal Paris Studio Line</h6>
+                        <p>From <strong>$90.00</strong></p>
+                        <a class="add-to-cart" href="">Add to cart</a>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+        <div class="news-con container">
+                <div class="row">
+                    <h3 class="news-title col-12">SEE WHAT'S NEW ON OUR BLOG</h3>
+                    <div class="news-item col-11 col-md-4"> 
+                        <article>
+                            <h6>14 JANUARY</h6>
+                            <p></p>
+                        </article>
+                        <img src="3-20hw/blog3_a7f4371f-e5f2-46ae-a3c0-01ff3da3296e_536x272_crop_top.jpg" alt="" class="d-block w-100">
+                        <article>
+                            <h6>You bring beauty to the world</h6>
+                            <p>Coco Chanel said that a woman who cuts her hair is about...</p>
+                            <a class="add-to-cart" href="">Read more</a>
+                             
+                    </div>
+                    <div class="news-item col-11 col-md-4"> 
+                        <article>
+                            <h6>14 JANUARY</h6>
+                            <p></p>
+                        </article>
+                        <img src="3-20hw/blog2_536x272_crop_top.jpg" alt="" class="d-block w-100">
+                        <article>
+                            <h6>Of best hair products here</h6>
+                            <p>Whoever you are, a professional hair stylist or a person who professionally...</p>
+                            <a class="add-to-cart" href="">Read more</a>
+
+                    </div>
+                    <div class="news-item col-11 col-md-4"> 
+                        <article>
+                            <h6>14 JANUARY</h6>
+                            <p></p>
+                        </article>
+                        <img src="3-20hw/blog4_536x272_crop_top.jpg" alt="" class="d-block w-100">
+                        <article>
+                            <h6>Or to be more precise...have...</h6>
+                            <p>For saving your time, please use filters: brand, concerns, formulation, ingredient preferences,...
+                            </p>
+                            <a class="add-to-cart" href="">Read more</a>
+
+                    </div>
         
         
                 </div>
-        </div>    
+            </div>
+        <div class="product-con container">
+            <div class="row">
+                <h3><strong>FEATURED</strong> PRODUCTS</h3>
+                <div class="w-100"></div>
+                <div class="product-item col-11 col-md-3 mx-auto">
+                    <img src="3-20hw/infiniti_pro_by_conair_hair_designer_3_in_1_styling_system_02_370x370_crop_top.jpg" class="d-block col-4 col-md-12  mx-auto">
+                    <article>
+                        <h6>Infiniti Pro by Conair Hair Designer 3 in 1 Sty...</h6>
+                        <p><strong>$50.00</strong></p>
+                        <a class="add-to-cart" href="">Add to cart</a>
+                        
+                    </article>
+                </div>
+                <div class="product-item col-11 col-md-3 mx-auto">
+                    <img src="3-20hw/instyler_ionic_styler_pro_ceramic_flat_iron_1_370x370_crop_top.jpg" alt=""class="d-block col-4 col-md-12  mx-auto">
+                    <article>
+                        <h6>InStyler Ionic Styler Pro Ceramic Flat Iron</h6>
+                        <p>From <strong> $66.00</strong></p>
+                        <a class="add-to-cart" href="">Unavailable</a>
+                        
+                    </article>
+                </div>
+                <div class="product-item col-11 col-md-3 mx-auto">
+                    <img src="3-20hw/jose_eber_wet_dry_flat_iron_straightener_01_370x370_crop_top.jpg" alt=""class="d-block col-4 col-md-12 mx-auto">
+                    <article>
+                        <h6>Jose Eber Wet & Dry Flat Iron Straightener</h6>
+                        <p><strong>$88.00</strong></p>
+                        <a class="add-to-cart" href="">Add to cart</a>
+                        
+                    </article>
+                </div>
+                <div class="product-item col-11 col-md-3 mx-auto">
+                    <img src="3-20hw/glide_thru_detangler_hair_comb_or_brush_01_370x370_crop_top.jpg" alt=""class="d-block col-4 col-md-12 mx-auto">
+                    <article>
+                        <h6>Glide Thru Detangler Hair Comb or Brush</h6>
+                        <p>From <strong>$56.00</strong></p>
+                        <a class="add-to-cart" href="">Add to cart</a>
+                        
+                    </article>
+                </div>
+                
+    
+            </div>
+        </div>
+        <div class="follow container">
+                <div class="row  ">
+                    <h2 class="follow-title mx-auto"><STrong>FOLLOW</STrong> US ON INSTAGRAM</h2>
+                </div>
+        </div>
+.<div class="subscribe-line container-fluid ">
+        <div class="row ">
+                <article class="col-12">
+                    <h4><strong>GET OUR SPECIAL OFFERS</strong></h4>
+                    <P>AND THE ULTIMATE HAIR CARE TIPS&TRICKS!</P>
+                </article>
+                <div class="sub mx-auto ">
+                    <input type="email" name="contact[email]" id="contact_email_footer" placeholder="Enter your email" class="hint">
+
+                    <button type="submit" name="subscribe" class="btn">Subscribe</button></div>
+                
+                    <h5 class="col-12"><strong>LET'S STAY CONNECTED</strong></h5>
+                    
+                    <nav class="col-7  col-md-5 mx-auto info ">
+                        <a href=""><i class="fab fa-twitter"></i></a>
+                        <a href=""><i class="fab fa-facebook-f"></i></a>
+                        <a href=""><i class="fab fa-youtube"></i></a>
+                        <a href=""><i class="fab fa-pinterest"></i></a>
+                        <a href=""><i class="fab fa-google-plus-g"></i></a>
+                    </nav>
+                    
+
+
+        </div>
+    </div>
+    <div class="map container-fluid">
+            <div class="row  ">
+               <div class="gmap_canvas w-100 ">
+                    <iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=university%20of%20san%20francisco&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no"  ></iframe><a class="" href="https://www.embedgooglemap.net/blog/nordvpn-coupon-code/"></a>
+                </div>
+                    <!-- <style>.mapouter{position:relative;text-align:right;height:50%;width:100%;}.gmap_canvas {overflow:hidden;background:none!important;height:50%;width:100%;}
+                    </style> -->
+                    </div>
+    
+            </div>
+        
+
+    <div class="footer container-fluid">
+            <div class="row">
+                <div class="final-logo col-12 col-md-3 ">
+                    <img src="3-20hw/footer_logo.jpg" alt="" class="d-block w-100">
+                    <p>This web store was originally launched in 2002 and was then titled the Style Factory. This name was a perfect fit then, simply because we’ve always had our focus on our hair care & hair treatment products lineup.</p>
+                </div>
+                <article class="col-12 col-md-3">
+                    <h6><strong>CATEGORIES</strong></h6>
+                    
+                 <p><a href="" class="col-12" >Hair Styling</a></p>
+                 <p><a href="" class="col-12" >Men’s Hair Care</a></p>
+                 <p><a href="" class="col-12" >Hair Care For Kids</a></p>
+                 <p><a href="" class="col-12" >Hair Health Treatment</a></p>
+                 <p><a href="" class="col-12" >Featured Products</a></p>
+                 <p><a href="" class="col-12" >Sale</a></p>
+                   
+                </article>
+                <article class="col-12 col-md-3">
+                    <h6><strong>MENU</strong></h6>
+
+                 <p><a href="" class="col-12" >Home</a></p>
+                 <p><a href="" class="col-12" >Catalog</a></p>
+                 <p><a href="" class="col-12" >About Us</a></p>
+                 <p><a href="" class="col-12" >Contact Us</a></p>
+                 <p><a href="" class="col-12" >Wishlist</a></p>
+                 <p><a href="" class="col-12" >Sitemap</a></p>
+
+                </article>
+                <article class="col-12 col-md-3">
+                    <h6><strong>CONTACT INFORMATION</strong></h6>
+                  <p><address>4578 Marmora Road, Glasgow D04 89GR</address></p>
+                  <p>1(234) 567-9842</p>
+                  <p>info@demolink.org</p>
+
+
+                </article>
+    
+    
+            </div>
+        </div>
+        <div class="final  col-12 "> 
+            <p>© 2020 Style Factory. All rights reserved.</p>
+            <a href="">Powered by Shopify</a>
+        </div>
+
+
 
 
     <!-- Optional JavaScript -->
