@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+    <style>
+        .number{
+            text-align: center;
+            margin-top: 10px;
+            padding: 50px;
+            border: 2px solid black;
+            font-size: 50px;
+        }
+        .row{
+            flex-direction: column;
+
+
+
+        }
+        .start{
+            margin: 50px 0 10px;
+            background-color: rgb(73, 155, 231);
+            padding: 20px;
+        }
+        .col-12{
+            text-align: center;
+        }
+        .col-3{
+            margin: 5px;
+            font-size: 30px;
+            padding: 30px ;
+            background-color: #cccccc;
+            color: #000;
+        }
+     
+        input{
+            margin: 10px 0 10px;
+
+        }
+        #btn-Del{
+            color: red;
+        }
+        #btn-check{
+            color: green;
+        }
+
+    </style>
+  </head>
+  <body>
+        <div class="container">
+                <div class="row  " id="window">
+                    <div class="number col-12" id="show">1~100</div>
+
+                    <button class=" start mx-auto" id="create_number" onclick="create_number()" >產生數字</button>
+                    <input type="text" class="mx-auto " readonly id="answer" >
+                    <div class="  col-12  ">
+                        <button class="col-3" id="btn-num">1</button>
+                        <button class="col-3" id="btn-num">2</button>
+                        <button class="col-3" id="btn-num">3</button>
+                        <button class="col-3" id="btn-num">4</button>
+                        <button class="col-3" id="btn-num">5</button>
+                        <button class="col-3" id="btn-num">6</button>
+                        <button class="col-3" id="btn-num">7</button>
+                        <button class="col-3" id="btn-num">8</button>
+                        <button class="col-3" id="btn-num">9</button>
+                        <button class="col-3" id="btn-Del">X</button>
+                        <button class="col-3" id="btn-num">0</button>
+                        <button class="col-3" id="btn-check">V</button>
+                    </div>
+
+                    
+                </div>
+            </div>
+
+    <script>
+        var show = document.getElementById('show');
+        var inputnum = document.getElementById('answer');
+        var btn_num = document.querySelectorAll("#btn-num");
+        var btn = document.getElementsByClassName('col-3');
+        var radom_number = 0;
+        var max_num = 100;
+        var min_num = 1;    
+        for(let close of btn)
+        {
+            close.setAttribute('disabled','disabled');
+        }
+        function create_number(){
+            radom_number = Math.floor((Math.random()*100));
+           
+            show.innerText = '1~100';
+            for(let close of btn)
+        {
+            close.removeAttribute('disabled','disabled');
+        }
+
+        }
+       
+
+        
+        for(let i = 0; i <btn_num.length;i++){
+            btn_num[i].addEventListener('click',inputnumber);
+        }
+        function inputnumber(){
+            inputnum.value += this.innerText;
+            
+        }
+        var clear = document.getElementById('btn-Del');
+        clear.onclick = function(){
+            inputnum.value='';
+        }
+        var check = document.getElementById('btn-check');
+        check.onclick = function(){
+           if(radom_number==inputnum.value){
+               alert('成功');
+               radom_number=NaN;
+               inputnum.value = '';
+               show.innerText='1~100';
+                for(let close of btn){
+                    close.setAttribute('disabled','disabled');
+                }
+               
+           }
+           else{
+            if(inputnum.value >max_num&&inputnum.value<min_num){
+               alert('範圍錯誤')
+           }
+           else if(inputnum.value<max_num && inputnum.value>radom_number){
+               max_num = inputnum.value;
+           }
+           else if(inputnum.value>min_num&&inputnum.value<radom_number){
+               min_num = inputnum.value;
+           }
+
+           show.innerText = `${min_num}~${max_num}`;
+           inputnum.value='';
+        
+        
+           }
+        
+        
+        }
+
+        
+        
+       
+
+        
+
+
+
+
+    </script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>
