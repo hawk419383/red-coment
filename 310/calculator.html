@@ -9,13 +9,102 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <title>Hello, world!</title>
+    <style>
+        .list{
+            height: 100px;
+            background-color: #cccc;
+        }
+        .show{
+            height: 100px;
+            background-color: royalblue;
+        }
+        .btns{
+            display: flex;
+            background-color:rgb(248, 248, 248);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .btns button{
+            padding: 5%;
+            margin: 10px;
+            border: 1px solid black;
+            box-sizing: border-box;
+        }
+    </style>
   </head>
   <body>
+    <div class="list col-10 mx-auto" id="list"></div>
+    <div class="show col-10 mx-auto" id="show"></div>
+    <div class="btns col-10 mx-auto" id="btns">
+        <button class="btn col-2" id="persent">%</button>
+        <button class="btn col-2" onclick="clean()" id="clear">CE</button>
+        <button class="btn col-2" id="clear">C</button>
+        <button class="btn col-2" id="del">X</button>
+        <button class="btn col-2" id="">1/x</button>
+        <button class="btn col-2" id="qurt">x^2</button>
+        <button class="btn col-2" id="">1</button>
+        <button class="btn col-2" id="divide">/</button>
+        <button class="btn col-2" id="num">7</button>
+        <button class="btn col-2" id="num">8</button>
+        <button class="btn col-2" id="num">9</button>
+        <button class="btn col-2" id="multiply">*</button>
+        <button class="btn col-2" id="num">4</button>
+        <button class="btn col-2" id="num">5</button>
+        <button class="btn col-2" id="num">6</button>
+        <button class="btn col-2" id="less">-</button>
+        <button class="btn col-2" id="num">1</button>
+        <button class="btn col-2" id="num">2</button>
+        <button class="btn col-2" id="num">3</button>
+        <button class="btn col-2" onclick="pluss()" id="plus">+</button>
+        <button class="btn col-2" id="positive and negative">+/-</button>
+        <button class="btn col-2" id="num">0</button>
+        <button class="btn col-2" id="dot">.</button>
+        <button class="btn col-2" onclick="equals()" id="equal">=</button>
+    </div>
+    <script>
+        var list = document.getElementById('list');
+        var inputnum = document.getElementById('show');
+        var btn_num = document.querySelectorAll('#num');
+        var equal = document.getElementById('equl');
+        var calculataor = new Array();
+        inputnum.value = '';
+        var first_number = 0;
+        var second_number = 0;
+        var func ;
+        function save_first_num(){
+             first_number =parseFloat(inputnum.value);
+             inputnum.value = '';
+             inputnum.innerText='';
+            
+        }
+        for(let i = 0; i <btn_num.length;i++){
+            btn_num[i].addEventListener('click',inputnumber);
+        }
+        function inputnumber(){
+            inputnum.value += this.innerText;
+            inputnum.innerText=inputnum.value;
+        }
+        
+
+        function pluss(){
+            inputnum.value = inputnum.value+'+';
+            save_first_num()
+            
+        }
+        
+        function equals(){
+            
+        }
+        
+        function clean(){
+            inputnum.value = 0;
+        }
+    </script>
 
 
 
 
-    
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
