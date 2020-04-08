@@ -1,108 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        button{
+        button {
             margin: 10px;
         }
     </style>
 </head>
+
 <body>
+
+    <button onclick="btn('iphone')" id="btn_iphone">iPhone</button>
+    <button onclick="btn('ipad')" id="btn_iPad">iPad</button>
+    <button onclick="btn('mac')" id="btn_Mac">Mac</button>
     
-        <button onclick="btn1()">iPhone</button>
-        <button onclick="btn2()">iPad</button>
-        <button onclick="btn3()">Mac</button>
-       
 
     <script>
-        var products = [
-            iPhone=[
-                p01=[id ='p01',price ='25000',color ='black',storage ='64G',network ='wifi',pic ='https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-xr-black-select-201809?wid=470&hei=556&fmt=png-alpha&.v=1551226038992',url ='#'],
-                p02 =[id ='p02',price ='27000',color ='red',storage ='128G',network ='wifi',pic ='https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-xr-red-select-201809?wid=470&hei=556&fmt=png-alpha&.v=1551226038669',url ='#'],
-                p03 =[id ='p03',price ='30000',color ='blue',storage ='256G',network ='wifi',pic ='https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-xr-blue-select-201809?wid=470&hei=556&fmt=png-alpha&.v=1565209264208',url ='#'] 
-            ],
-            iPad =[],
-            Mac=[],
-            Watch=[]
-        ];
+        var products = {
+            iphone: {
+                main: {
+                    pic: 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-11-og-201909?wid=1200&hei=630&fmt=jpeg&qlt=95&op_usm=0.5,0.5&.v=1566949840644'
+                },
+                color: [
+                    p01 = {
+                        id: 'p01',
+                        color: '紅',
+                        network: 'Wifi',
+                        pic: 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone11-red-select-2019?wid=470&hei=556&fmt=png-alpha&.v=1566956144763',
+                        url: '#'
+                    },
+                    p02 = {
+                        id: 'p02',
+                        color: '黑',
+                        network: 'Wifi',
+                        pic: 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone11-black-select-2019?wid=470&hei=556&fmt=png-alpha&.v=1566956144418',
+                        url: '#'
+                    },
+                    p03 = {
+                        id: 'p03',
+                        color: '黃',
+                        network: 'Wifi',
+                        pic: 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone11-yellow-select-2019?wid=470&hei=556&fmt=png-alpha&.v=1568141245782',
+                        url: '#'
+                    }
+                ],
+                value: [
+                     {
+                        price: '25000',
+                        storage: '64G'
+                    },
+                     {
+                        price: '27000',
+                        storage: '128G'
+                    },
+                     {
+                        price: '28000',
+                        storage: '256G'
+                    }
+                ]
+
+            },
+            ipad: {},
+            mac: {},
+            watch: {}
+        };
         var body = document.getElementsByTagName('body')[0];
-        var index = 0;
-        var img =document.createElement('img');
-        function btn1(){
-        var btn_color_area = document.createElement('div');
-        for(let i=0;i<products[0].length;i++){
-                let btn_color= document.createElement('button');
-            btn_color.innerText=products[0][i][2];
-            btn_color_area.appendChild(btn_color);
-            btn_color.addEventListener('click', change_color);
-            btn_color.setAttribute('id', index);
-            index++;
-           
-        }
+        var color_area = document.createElement('div');
+        var price_area = document.createElement('div');
+        var img = document.createElement('img')
+            img.setAttribute('id','photo')
+        var total = document.createElement('div');
         
-      
-
-        body.appendChild(btn_color_area);
-        var  btn_ram_area = document.createElement('div');
-        for(let i=0;i<products[0].length;i++){
-            let btn_ram= document.createElement('button');
-           btn_ram.innerText=products[0][i][3];
-           btn_ram_area.appendChild(btn_ram);
-           btn_ram.addEventListener('click', show_price);
-        
-        }
-        body.appendChild(btn_ram_area);
-
-         img.setAttribute('src','https://www.apple.com/v/iphone-xr/e/images/specs/hero_iphone_xr__xt5mnse2zkia_large.jpg');
         body.appendChild(img);
-        }
-        
-        
+        body.appendChild(total);
 
 
+        function btn(name) {
+            //console.log(products[name]);
+            
+            img.setAttribute('src',`${ products[name].main.pic}`)
+            
+            products[name].color.forEach(element => {
+                let button = document.createElement('button')
+                button.innerHTML = element.color;
+                 //console.log(element.color);
+                button.addEventListener("click",() =>{change_color(`${element.pic}`)});
+                color_area.appendChild(button);
+            });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        function change_color(){
-            let x = getSelection()
-            img.setAttribute('src',products[0][btn_color.data-index]);
-            body.appendChild(img);
-        
-        }
-
-        function show_price(){
+            body.appendChild(color_area);
+            products[name].value.forEach(element => {
+                let button = document.createElement('button')
+                button.innerHTML = element.storage;
+                button.addEventListener("click",() =>{change_memory(`${element.price}`)});
+                price_area.appendChild(button);
+            });
+            body.appendChild(price_area);
 
         }
+        function change_color(color){
+             //console.log(color);
+             img.src=(color);
 
+        }
+        function change_memory(price){
+           // console.log(price);
+           total.innerHTML=price;
 
-      
-       
-        
-
-       
-    
+        }
     </script>
 </body>
+
 </html>
