@@ -6,18 +6,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        button {
-            margin: 10px;
+        @media screen and (min-width: 768px) {
+            body {
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+            button {
+                width: 200px;
+                padding: 20px 0 20px;
+                margin: 5px;
+                font-size: 20px;
+            }
+
+            button:hover {
+                background-color: #ccc;
+            }
+
+            .container {
+                width: 100%;
+                text-align: center;
+                
+            }
+
+            #photo {
+                width: 50%;
+
+            }
+
+            #photo img {
+                width: 100%;
+                border-bottom: none;
+            }
+
+            .button {
+
+                
+                width: 50%;
+            }
+
+            .button button {
+                width: 30%;
+            }
+
+           
+
+            #total {
+                width: 50%;
+                font-size: 50px;
+            }
         }
     </style>
 </head>
 
 <body>
+    <div class="container">
+        <button onclick="btn('iphone')" id="btn_iphone">iPhone</button>
+        <button onclick="btn('ipad')" id="btn_iPad">iPad</button>
+        <button onclick="btn('mac')" id="btn_Mac">Mac</button>
+    </div>
+    <div id="img"></div>
+    <div class="button">
+        <div id="color_area"></div>
+        <div id="price_area"></div>
+        <div id="total"></div>
+    </div>
 
-    <button onclick="btn('iphone')" id="btn_iphone">iPhone</button>
-    <button onclick="btn('ipad')" id="btn_iPad">iPad</button>
-    <button onclick="btn('mac')" id="btn_Mac">Mac</button>
-    
 
     <script>
         var products = {
@@ -48,68 +102,151 @@
                         url: '#'
                     }
                 ],
-                value: [
-                     {
+                value: [{
                         price: '25000',
                         storage: '64G'
                     },
-                     {
+                    {
                         price: '27000',
                         storage: '128G'
                     },
-                     {
+                    {
                         price: '28000',
                         storage: '256G'
                     }
                 ]
 
             },
-            ipad: {},
-            mac: {},
-            watch: {}
+            ipad: {
+                main: {
+                    pic: 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/ipad-pro-og-202003?wid=1200&hei=630&fmt=jpeg&qlt=95&op_usm=0.5,0.5&.v=1583201083141'
+                },
+                color: [
+                    p01 = {
+                        id: 'p01',
+                        color: '太空灰',
+                        network: 'Wifi',
+                        pic: 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/ipad-pro-12-select-cell-spacegray-202003_GEO_TW?wid=470&hei=556&fmt=png-alpha&.v=1583552336687',
+                        url: '#'
+                    },
+                    p02 = {
+                        id: 'p02',
+                        color: '銀',
+                        network: 'Wifi',
+                        pic: 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/ipad-pro-12-select-cell-silver-202003_GEO_TW?wid=470&hei=556&fmt=png-alpha&.v=1583550058848',
+                        url: '#'
+                    },
+                   
+                ],
+                value: [{
+                    price: '29500',
+                        storage: '128G'
+                    },
+                    {
+                        price: '33000',
+                        storage: '256G'
+                    },
+                    {
+                        price: '40000',
+                        storage: '512G'
+                    }
+                ]
+            },
+            mac: {
+                main: {
+                    pic: 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/macbook-air-og-201810?wid=1200&hei=630&fmt=jpeg&qlt=95&op_usm=0.5,0.5&.v=1539469010587'
+                },
+                color: [
+                    p01 = {
+                        id: 'p01',
+                        color: '太空灰',
+                        network: 'Wifi',
+                        pic: 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/macbook-air-space-gray-select-201810?wid=452&hei=420&fmt=jpeg&qlt=95&op_usm=0.5,0.5&.v=1541713862468',
+                        url: '#'
+                    },
+                    p02 = {
+                        id: 'p02',
+                        color: '銀',
+                        network: 'Wifi',
+                        pic: 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/macbook-air-silver-select-201810?wid=452&hei=420&fmt=jpeg&qlt=95&op_usm=0.5,0.5&.v=1541713861325',
+                        url: '#'
+                    },
+                    p02 = {
+                        id: 'p02',
+                        color: '金',
+                        network: 'Wifi',
+                        pic: 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/macbook-air-gold-select-201810?wid=452&hei=420&fmt=jpeg&qlt=95&op_usm=0.5,0.5&.v=1541713859040',
+                        url: '#'
+                    }
+                   
+                ],
+                value: [
+                    
+                    {
+                        price: '28700',
+                        storage: '256G'
+                    },
+                    {
+                        price: '38700',
+                        storage: '512G'
+                    }
+                ]
+            },
+            
         };
         var body = document.getElementsByTagName('body')[0];
-        var color_area = document.createElement('div');
-        var price_area = document.createElement('div');
-        var img = document.createElement('img')
-            img.setAttribute('id','photo')
-        var total = document.createElement('div');
-        
-        body.appendChild(img);
-        body.appendChild(total);
+        var color_area = document.getElementById('color_area');
+        var price_area = document.getElementById('price_area');
+        var img = document.getElementById('img')
+        var picture = document.createElement('img')
+        img.setAttribute('id', 'photo')
+        var total = document.getElementById('total');
+
+        img.appendChild(picture);
+        total.appendChild(total);
 
 
         function btn(name) {
+            color_area.innerHTML = '';
+            price_area.innerHTML = '';
+            picture.src = '';
+            total.innerHTML = ''
             //console.log(products[name]);
-            
-            img.setAttribute('src',`${ products[name].main.pic}`)
-            
+
+            picture.setAttribute('src', `${ products[name].main.pic}`)
+
             products[name].color.forEach(element => {
                 let button = document.createElement('button')
                 button.innerHTML = element.color;
-                 //console.log(element.color);
-                button.addEventListener("click",() =>{change_color(`${element.pic}`)});
+                //console.log(element.color);
+                button.addEventListener("click", () => {
+                    change_color(`${element.pic}`)
+                });
                 color_area.appendChild(button);
             });
 
-            body.appendChild(color_area);
+
             products[name].value.forEach(element => {
                 let button = document.createElement('button')
                 button.innerHTML = element.storage;
-                button.addEventListener("click",() =>{change_memory(`${element.price}`)});
+                button.addEventListener("click", () => {
+                    change_memory(`${element.price}`)
+                });
                 price_area.appendChild(button);
             });
-            body.appendChild(price_area);
+
 
         }
-        function change_color(color){
-             //console.log(color);
-             img.src=(color);
+
+        function change_color(color) {
+            //console.log(color);
+            picture.src = (color);
 
         }
-        function change_memory(price){
-           // console.log(price);
-           total.innerHTML=price;
+
+        function change_memory(price) {
+            // console.log(price);
+            total.innerHTML = `總額 : ${price}`;
 
         }
     </script>
