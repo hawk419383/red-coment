@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+    <script src="/310/Modules/Myhelper.js"></script>
+</head>
+
+<body>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="gundam mx-auto">
+
+            </div>
+
+        </div>
+    </div>
+
+    <Gundam_card id="gundam_card" >
+        <div class="gun_card">
+            <div></div>
+            <article>
+                <p>名稱</p>
+                <p>價錢</p>
+            </article>
+        </div> 
+    </Gundam_card>
+    <script>
+        let body =$g('body');
+        let gundam = $n('gundam');
+        let model='';
+        window.onload = function () {
+            let xhr = new XMLHttpRequest;
+            xhr.onload = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    ipad = JSON.parse(this.responseText);
+                    const titlesArray = Object.keys(ipad[0]);
+                    //建立thead
+                    addThead(titlesArray);
+                    //迭代陣列, 每個Item是一個Object, 再用.values()取值,回傳陣列
+                    ipad.forEach((item) => {
+                        addTbody(Object.values(item))
+                    });
+                } else {
+                    msg.textContent = '發生錯誤，HTTP response代碼：' + xhr.status;
+                }
+                // document.getElementById("msg").innerHTML=this.responseText;
+            }
+            xhr.open("GET", "http://127.0.0.1:5501/Hawk-labs/Hawk-lee-labs/Array/ipad.json");
+            xhr.send();
+        }
+
+    </script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>
