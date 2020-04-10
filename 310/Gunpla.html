@@ -13,89 +13,237 @@
     <title>Hawk's World!</title>
     <script src="/310/Modules/Myhelper.js"></script>
     <style>
-        body{background-color: rgb(17, 32, 75);}
-        img{
-            width: 100%;
-        }
-        .gun_card{
-            text-align: center;
-            padding: 10px;
-            border: 2px solid #f1b647;
+        body {
             background-color: rgb(17, 32, 75);
-            
-        }
-        .col-12{
-            display: flex;
-            flex-wrap: wrap;
-            padding-top: 20px;
-            
-            
-        }
-        .pic{
-            width: 100%;
-            padding-bottom: 100%;
-            background-position: center ,center;
-            background-size: cover;
-        }
-        .pic{
-            background-image: url('');
-        }
-        p{
-            font-size: 20px;
-            color: #f1b647;
-        }
-        article{
-            padding: 10px;
-            box-sizing: border-box;
         }
 
-        
+
+        .pic {
+            width: 100%;
+            padding-bottom: 100%;
+            background-position: center center;
+            background-size: cover;
+
+
+
+
+        }
+
+        article {
+            color: rgb(228, 210, 48);
+
+            height: 100%;
+            background-color: rgba(0, 0, 0, .8);
+            text-align: center;
+            position: absolute;
+            padding-top: 30%;
+            opacity: 0;
+            transform: scale(0);
+            transition: .5s;
+        }
+
+        .gun_card {
+            padding: 0;
+            border: 2px solid rgb(228, 210, 48);
+            position: relative;
+
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .gun_card:hover article {
+            transform: scale(1);
+            opacity: 1;
+            
+        }
+
+        h3 {
+            font-size: 1.5rem;
+        }
+
+        p {
+            font-size: 1.5rem;
+        }
     </style>
 </head>
 
 <body>
+    <div class="col-12"></div>
+    <div class="container">
+        <div class="row">
 
 
-   
+        </div>
+    </div>
+
 
     <template id="gundam_card">
-        <div class="gun_card col-3 mx-auto">
-            <div class="pic"></div>
-            <article>
-                <p></p>
+        <div class="gun_card  col-md-3 col-6  mx-auto">
+            <div class=" pic w-100">
+
+
+            </div>
+            <article class=" w-100">
+                <h3></h3>
+                <h3></h3>
                 <p></p>
             </article>
         </div>
     </template>
     <script>
-        let body = document.getElementsByTagName('body')[0];
-        
-        var div = document.createElement('div');
-        div.setAttribute('class','col-12 mx-auto')
-        body.appendChild(div);
+        var row = document.getElementsByClassName('row')[0];
+        console.log(row);
+
         let model = '';
-        
-        
+
+
         window.onload = function () {
-            let xhr = new XMLHttpRequest;
-            xhr.onload = function () {
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    model = JSON.parse(this.responseText);
-                    const name = Object.keys(model[0]);
-                    model.forEach((item) => {
-                        addCard(Object.values(item))
-                        // console.log(item);
-                    });
-                } else {
-                    msg.textContent = '發生錯誤，HTTP response代碼：' + xhr.status;
+            // let xhr = new XMLHttpRequest;
+            // xhr.onload = function () {
+            //     if (xhr.readyState == 4 && xhr.status == 200) {
+            //         model = JSON.parse(this.responseText);
+            //         const name = Object.keys(model[0]);
+            //         model.forEach((item) => {
+            //             addCard(Object.values(item))
+            //             // console.log(item);
+            //         });
+            //     } else {
+            //         msg.textContent = '發生錯誤，HTTP response代碼：' + xhr.status;
+            //     }
+            //     // document.getElementById("msg").innerHTML=this.responseText;
+
+            // }
+            // xhr.open("GET", "http://127.0.0.1:5502/Hawk-labs/gundam/gundam.JSON");
+            // xhr.send();
+            model = [{
+                    "code": "MS-06S",
+                    "GudamName": " ZAKU II",
+                    "Pic_Url": "https://ct.yimg.com/xd/api/res/1.2/ratzXotpsZ36Gz4_L3n8nw--/YXBwaWQ9eXR3YXVjdGlvbnNlcnZpY2U7aD03NTg7cT04NTtyb3RhdGU9YXV0bzt3PTEyMDA-/https://s.yimg.com/ob/image/6986fd31-3492-4c9f-ae90-13fa1ae84020.jpg",
+                    "Price": "NT:880"
+                },
+                {
+                    "code": "MSN-06S",
+                    "GudamName": " SINANJU",
+                    "Pic_Url": "https://hinetcdn.waca.ec/uploads/shops/506/products/70/704f8ff887c13e5e94fc6b7d4ca924b4.jpg",
+                    "Price": "NT:1950"
+                },
+                {
+                    "code": "MS-06R",
+                    "GudamName": " PSYCHO ZAKU",
+                    "Pic_Url": "https://ct.yimg.com/xd/api/res/1.2/pmOkjc4a8rxn_KFK4y5f9w--/YXBwaWQ9eXR3YXVjdGlvbnNlcnZpY2U7aD00OTk7cT04NTtyb3RhdGU9YXV0bzt3PTgwMA--/https://s.yimg.com/ob/image/c4c85d00-9576-4c6a-b914-3615c169f1f8.jpg",
+                    "Price": "NT:699"
+                },
+                {
+                    "code": "RX-0",
+                    "GudamName": " UNICORN",
+                    "Pic_Url": "https://hinetcdn.waca.ec/uploads/shops/506/products/4e/4e12dea2618fa0e4d6d1e817c0e2a879.jpg",
+                    "Price": "NT:1950"
+                },
+                {
+                    "code": "RX-78-2",
+                    "GudamName": " GUNDAM",
+                    "Pic_Url": "https://lh3.googleusercontent.com/proxy/VmhROau6vuGqAzMYE4ddF3hSm8I2oOL5h2IoOXOMsDmcg4xC7_L_s8mKFwm6ZkFM25tKbq-TR-u9ATyEDYzt474n50Gdz_f2fc6ZiGyb-xQzJPzox7bmHex2NHGVYzOr_eaBWCxaA5dYtOv07DoE8PdTfGj2",
+                    "Price": "NT:1150"
+                },
+                {
+                    "code": "FA-78",
+                    "GudamName": " FULL ARMOR GUNDAM",
+                    "Pic_Url": "https://hinetcdn.waca.ec/uploads/shops/506/products/77/77f6324e6b4ab4f9017919400374ea8b.jpg",
+                    "Price": "NT:1799"
+                },
+                {
+                    "code": "RX-0",
+                    "GudamName": " UNICORN[3] PHENEX",
+                    "Pic_Url": "https://hinetcdn.waca.ec/uploads/shops/506/products/b0/b0e9988d1241eade9617606e73a55079.jpg",
+                    "Price": "NT:3080"
+                },
+                {
+                    "code": "GAT-X105E",
+                    "GudamName": " STRIKE NOIR",
+                    "Pic_Url": "https://hinetcdn.waca.ec/uploads/shops/506/products/51/51ed37753e86dabca36f555d9acdc15e.jpg",
+                    "Price": "NT:1150"
+                },
+                {
+                    "code": "ZGMF-X10A",
+                    "GudamName": " FREEDOM",
+                    "Pic_Url": "https://hinetcdn.waca.ec/uploads/shops/506/products/46/46039ec6729d227727fec22228d3c050.jpg",
+                    "Price": "NT:1150"
+                },
+                {
+                    "code": "ZGMF-X19A",
+                    "GudamName": " INFINTE JUSTICE",
+                    "Pic_Url": "https://hinetcdn.waca.ec/uploads/shops/506/products/7e/7e57dc40567ff956bdf4043a42204c7c.jpg",
+                    "Price": "NT:1250"
+                },
+                {
+                    "code": "GNT-0000",
+                    "GudamName": " OO QAN[T]",
+                    "Pic_Url": "https://hinetcdn.waca.ec/uploads/shops/506/products/9e/9e1e24bb05cfd24d9d2ff0cd62a2640b.jpg",
+                    "Price": "NT:1155"
+                },
+                {
+                    "code": "GN-0000",
+                    "GudamName": " OO RAISER",
+                    "Pic_Url": "https://hinetcdn.waca.ec/uploads/shops/506/products/c2/c2a57e9153a7644e5d35f73d5606b4c5.jpg",
+                    "Price": "NT:1150"
+                },
+                {
+                    "code": "F91",
+                    "GudamName": "F91 GUNDAM",
+                    "Pic_Url": "https://hinetcdn.waca.ec/uploads/shops/506/products/e3/e3514df162b4dd29858b00d6fda2e1f1.jpg",
+                    "Price": "NT:999"
+                },
+                {
+                    "code": "ZGMF-X09A",
+                    "GudamName": " JUSTICE",
+                    "Pic_Url": "https://hinetcdn.waca.ec/uploads/shops/2303/products/40/407e1031f31cf713e1e8bfb73cbf298e.jpg",
+                    "Price": "NT:1230"
+                },
+                {
+                    "code": "ZGMF-X13A",
+                    "GudamName": " PROVIDENCE ",
+                    "Pic_Url": "https://hinetcdn.waca.ec/uploads/shops/506/products/02/025bf8259a4e2fa313d5c8884085ee64.jpg",
+                    "Price": "NT:1285"
+                },
+                {
+                    "code": "RX-0",
+                    "GudamName": "UNICORN[2] BANSHEE NORN",
+                    "Pic_Url": "https://hinetcdn.waca.ec/uploads/shops/506/products/4b/4bb9e1dd2346820fb30f4fae5a22363a.jpg",
+                    "Price": "NT:3000"
+                },
+                {
+                    "code": "XXXG-00W0",
+                    "GudamName": " WING EW ",
+                    "Pic_Url": "https://hinetcdn.waca.ec/uploads/shops/506/products/46/4621ea014ddbbd5d320a382845b9a911.jpg",
+                    "Price": "NT:980"
+                },
+                {
+                    "code": "ZGMF-X42S",
+                    "GudamName": " DENSTINY",
+                    "Pic_Url": "https://hinetcdn.waca.ec/uploads/shops/506/products/e0/e0c38e25c87371db4582336c47f5704a.jpg",
+                    "Price": "NT:1750"
+                },
+                {
+                    "code": "ZGMF-X20A",
+                    "GudamName": " STRIKE FREEDOM",
+                    "Pic_Url": "https://img.ruten.com.tw/s1/5/9c/0d/21634415921165_285.jpg",
+                    "Price": "NT:1799"
+                },
+                {
+                    "code": "GN-002",
+                    "GudamName": " DYNAMES",
+                    "Pic_Url": "https://hinetcdn.waca.ec/uploads/shops/506/products/b6/b6afaba7a2bcfaccf6fc81ae237f6948.jpg",
+                    "Price": "NT:1160"
                 }
-                // document.getElementById("msg").innerHTML=this.responseText;
-                
-            }
-            xhr.open("GET", "http://127.0.0.1:5502/Hawk-labs/gundam/gundam.JSON");
-            xhr.send();
-            
-            
+
+
+            ]
+            model.forEach((item) => {
+                addCard(Object.values(item))
+                // console.log(item);
+            });
         }
 
         function addCard(x) {
@@ -106,16 +254,18 @@
             let pic = cloneContent.querySelectorAll('div');
             let img = document.createElement('img');
             let p = cloneContent.querySelectorAll('p')
-             console.log(pic);
-           pic[1].setAttribute('style',`background-image: url('${x[1]}')`)
-           
-            p[0].textContent = x[0];
-            p[1].textContent = x[2];
-            
-             //pic.appendChild(img);
-          
-            div.appendChild(cloneContent);
-            
+            let h3 = cloneContent.querySelectorAll('h3')
+            //console.log(pic);
+            pic[1].setAttribute('style', `background-image: url('${x[2]}')`)
+
+            h3[0].textContent = x[0];
+            h3[1].textContent = x[1];
+            p[0].textContent = x[3]
+
+            //pic.appendChild(img);
+
+            row.appendChild(cloneContent);
+
         }
     </script>
 

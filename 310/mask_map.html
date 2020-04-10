@@ -8,9 +8,23 @@
     <style>
         /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
-
+        body{
+            display: flex;
+        }
         #map {
+            width: 80%;
             height: 100%;
+        }
+        #search{
+            width: 20%;
+            height: 100%;
+            font-size: large;
+            
+        }
+        .con{
+            width: 100%;
+            
+            padding: 20px 5px;
         }
 
         /* Optional: Makes the sample page fill the window. */
@@ -20,14 +34,27 @@
             margin: 0;
             padding: 0;
         }
+        
     </style>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <div id="map"></div>
+    
+    <div  id="search">
+        <div class="con">
+        <label for="">輸入地區</label>
+        <input type="text" >
+        <button form="input" ></button>
+    </div>
+
+    </div>
+    <div  id="map"></div>
     <script>
+        var btn = document.createElement('button');
+        var search = document.getElementById('search');
+
         var maskleft;
         var childMasksLeft;
 
@@ -74,12 +101,23 @@
 
             // console.log(addr);
             // console.log(myLatLng);
-            if(maskleft>0 || childMasksLeft>0 ){
+            if((maskleft+childMasksLeft)/1000 >0.5 ){
             let marker = new google.maps.Marker({
                 position: myLatlng,
                 map: map,
                 icon: {
                     url: "O.png",
+                    scaledSize: new google.maps.Size(30, 30),
+                },
+                title: '口罩很多!'
+            });
+        }
+          else  if((maskleft+childMasksLeft)/1000<0.5&& (maskleft+childMasksLeft)/1000>0 ){
+            let marker = new google.maps.Marker({
+                position: myLatlng,
+                map: map,
+                icon: {
+                    url: "no.png",
                     scaledSize: new google.maps.Size(20, 20),
                 },
                 title: '還有口罩!'
@@ -99,6 +137,7 @@
         }
 
         }
+
     </script>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlKWP4uWjQIR3WDAWLAu6rUhBfc3_ppag&callback=initMap"
