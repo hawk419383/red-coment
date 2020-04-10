@@ -12,54 +12,111 @@
 
     <title>Hello, world!</title>
     <script src="/310/Modules/Myhelper.js"></script>
+    <style>
+        body{background-color: rgb(17, 32, 75);}
+        img{
+            width: 100%;
+        }
+        .gun_card{
+            text-align: center;
+            padding: 10px;
+            border: 2px solid #f1b647;
+            background-color: rgb(17, 32, 75);
+            
+        }
+        .col-12{
+            display: flex;
+            flex-wrap: wrap;
+            padding-top: 20px;
+            
+            
+        }
+        .pic{
+            width: 100%;
+            padding-bottom: 100%;
+            background-position: center ,center;
+            background-size: cover;
+        }
+        .pic{
+            background-image: url('');
+        }
+        p{
+            font-size: 20px;
+            color: #f1b647;
+        }
+        article{
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        
+    </style>
 </head>
 
 <body>
 
 
-    <div class="container">
-        <div class="row">
-            <div class="gundam mx-auto">
+   
 
-            </div>
-
-        </div>
-    </div>
-
-    <Gundam_card id="gundam_card" >
-        <div class="gun_card">
-            <div></div>
+    <template id="gundam_card">
+        <div class="gun_card col-3 mx-auto">
+            <div class="pic"></div>
             <article>
-                <p>名稱</p>
-                <p>價錢</p>
+                <p></p>
+                <p></p>
             </article>
-        </div> 
-    </Gundam_card>
+        </div>
+    </template>
     <script>
-        let body =$g('body');
-        let gundam = $n('gundam');
-        let model='';
+        let body = document.getElementsByTagName('body')[0];
+        
+        var div = document.createElement('div');
+        div.setAttribute('class','col-12 mx-auto')
+        body.appendChild(div);
+        let model = '';
+        
+        
         window.onload = function () {
             let xhr = new XMLHttpRequest;
             xhr.onload = function () {
                 if (xhr.readyState == 4 && xhr.status == 200) {
-                    ipad = JSON.parse(this.responseText);
-                    const titlesArray = Object.keys(ipad[0]);
-                    //建立thead
-                    addThead(titlesArray);
-                    //迭代陣列, 每個Item是一個Object, 再用.values()取值,回傳陣列
-                    ipad.forEach((item) => {
-                        addTbody(Object.values(item))
+                    model = JSON.parse(this.responseText);
+                    const name = Object.keys(model[0]);
+                    model.forEach((item) => {
+                        addCard(Object.values(item))
+                        // console.log(item);
                     });
                 } else {
                     msg.textContent = '發生錯誤，HTTP response代碼：' + xhr.status;
                 }
                 // document.getElementById("msg").innerHTML=this.responseText;
+                
             }
-            xhr.open("GET", "http://127.0.0.1:5501/Hawk-labs/Hawk-lee-labs/Array/ipad.json");
+            xhr.open("GET", "http://127.0.0.1:5501/Hawk-labs/gundam/gundam.JSON");
             xhr.send();
+            
+            
         }
 
+        function addCard(x) {
+
+            let gundam_card = $g('#gundam_card');
+            let cloneContent = gundam_card.content.cloneNode(true);
+            //console.log(cloneContent);
+            let pic = cloneContent.querySelectorAll('div');
+            let img = document.createElement('img');
+            let p = cloneContent.querySelectorAll('p')
+             console.log(pic);
+           pic[1].setAttribute('style',`background-image: url('${x[1]}')`)
+           
+            p[0].textContent = x[0];
+            p[1].textContent = x[2];
+            
+             //pic.appendChild(img);
+          
+            div.appendChild(cloneContent);
+            
+        }
     </script>
 
     <!-- Optional JavaScript -->
