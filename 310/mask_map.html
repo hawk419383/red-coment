@@ -129,7 +129,7 @@
         var id = [];
         $.ajax({
             type: "Get",
-            url: "https://maskmap.azurewebsites.net/api/mask/getmaskstock",
+            url: "https://raw.githubusercontent.com/kiang/pharmacies/master/json/points.json",
             data: "data",
             dataType: "JSON",
             success: function (response) {
@@ -155,8 +155,8 @@
             //console.log(x);
             var addr = x.geometry["coordinates"]
             // console.log(addr);
-            maskleft = x.properties.masksLeft;
-            childMasksLeft = x.properties.childMasksLeft;
+            maskleft = x.properties.mask_adult;
+            childMasksLeft = x.properties.mask_child;
             let myLatlng = {
                 lat: addr[1],
                 lng: addr[0]
