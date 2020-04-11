@@ -70,7 +70,7 @@
         <div class="con">
             <label for="">輸入地區或店名:</label>
             <input type="text" value="">
-            <button form="input" id="btn_search" >確認</button>
+            <button form="input" id="btn_search">確認</button>
         </div>
 
     </div>
@@ -78,9 +78,9 @@
     <script>
         //選單
         var input = document.getElementsByTagName('input')[0];
-        
+
         var btn_input = document.getElementById('btn_search');
-        btn_input.addEventListener('click',input_area);
+        btn_input.addEventListener('click', input_area);
 
         var search = document.getElementById('search');
         var country = ['新北市', '臺北市', '桃園市', '基隆市', '新竹市', '宜蘭縣', '新竹縣', '臺中市', '苗栗縣', '彰化縣', '南投縣', '雲林縣', '台南市', '高雄市',
@@ -116,6 +116,8 @@
                 },
                 zoom: 7
             });
+           
+
         }
         var mask = [];
         var id = [];
@@ -137,12 +139,12 @@
 
                 })
                 //console.log("hi")
-                 //find_area();
+                //find_area();
             }
 
         });
 
-//顯示位子
+        //顯示位子
         function getaddr(x) {
             //console.log(x);
             var addr = x.geometry["coordinates"]
@@ -153,11 +155,24 @@
                 lat: addr[1],
                 lng: addr[0]
             };
-
+            var contentString = `<div id="content">` +
+                `<div id="siteNotice">` +
+                `</div>` +
+                `<h1 id="firstHeading" class="h1">藥局名稱:${x.properties.name}</h1>` +
+                `<h3 class="h3">藥局電話:${x.properties.phone}<h3>` +
+                `<h3 class="h3">藥局地址${x.properties.address}<h3>` +
+                `<h3 class="h3">備註:${x.properties.note}<h3>` +
+                `<h2 class="h2">成人口罩:${x.properties.masksLeft}個<h2>` +
+                `<h2 class="h2">兒童口罩:${x.properties.childMasksLeft}個<h2>` +
+                `</div>`;
+                var infowindow = new google.maps.InfoWindow({
+                content: contentString
+            });
             // console.log(addr);
             // console.log(myLatLng);
+            let marker;
             if ((maskleft + childMasksLeft) / 1000 > 0.5) {
-                let marker = new google.maps.Marker({
+                 marker = new google.maps.Marker({
                     position: myLatlng,
                     map: map,
                     icon: {
@@ -167,7 +182,7 @@
                     title: '口罩很多!'
                 });
             } else if ((maskleft + childMasksLeft) / 1000 < 0.5 && (maskleft + childMasksLeft) / 1000 > 0) {
-                let marker = new google.maps.Marker({
+                 marker = new google.maps.Marker({
                     position: myLatlng,
                     map: map,
                     icon: {
@@ -177,7 +192,7 @@
                     title: '還有口罩!'
                 });
             } else {
-                let marker = new google.maps.Marker({
+                 marker = new google.maps.Marker({
                     position: myLatlng,
                     map: map,
                     icon: {
@@ -188,11 +203,14 @@
                 });
 
             }
+             marker.addListener('click', function () {
+                infowindow.open(map, marker);
+            });
 
         }
 
         //建立新json
-        //var json = [];
+        var json = [];
         var json = [{
             "type": "Feature",
             "geometry": {
@@ -221,7 +239,7 @@
         }]
         //json 塞入資訊
         function find_area() {
-
+             console.log(123);
             id.forEach((x) => {
                 $.ajax({
                     type: "Get",
@@ -242,25 +260,23 @@
             //console.log('HI');
             initMap();
 
-            let ub =area_name;
-            
+            let ub = area_name;
+
             let CName = '';
             let storname = '';
             json.forEach((x) => {
-                for (let i = 0; i <area_name.length ; i++) {
+                for (let i = 0; i < area_name.length; i++) {
                     CName += x.properties.address[i];
                     storname += x.properties.name[i];
                 }
-                
+
                 if (CName == area_name) {
-                     
+
                     getaddr(x);
-                   
-                }
-                else if( storname == area_name){
+
+                } else if (storname == area_name) {
                     getaddr(x);
-                } 
-                else{
+                } else {
                     alert('輸入資訊不存在或錯誤')
                 }
 
@@ -268,14 +284,10 @@
             });
         }
 
-    function input_area(){
-        
-        
-        let inputaaa= input.innerText;
-        find_a(inputaaa);
-
-        
-    }
+        function input_area() {
+            let inputaaa = input.innerText;
+            find_a(inputaaa);
+        }
     </script>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlKWP4uWjQIR3WDAWLAu6rUhBfc3_ppag&callback=initMap"
