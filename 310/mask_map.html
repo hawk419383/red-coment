@@ -78,6 +78,12 @@
             <input type="text" value="">
             <button form="input" id="btn_search">確認</button>
         </div>
+        <div class="check">
+            <input type="checkbox" class="morethan50p" value="">
+            <label for="">只顯示庫存大於50%</label>
+            <input type="checkbox" class="soldout" value="">
+            <label for="">不顯示缺貨</label>
+        </div>
         <div class="btn_area"></div>
 
     </div>
@@ -113,6 +119,8 @@
         //地圖
         var maskleft;
         var childMasksLeft;
+        var more50 = document.getElementsByClassName('morethan50p')[0];
+        var soldout = document.getElementsByClassName('soldout')[0];
 
         function initMap() {
             //alert('資料不足!! 目前僅能點擊新北市,輸入新北市或新北市八里區衛生所 ')
@@ -153,7 +161,7 @@
 
         //顯示位子
         function getaddr(x) {
-            console.log(2);
+            // console.log(2);
             //console.log(x);
             var addr = x.geometry["coordinates"];
             // console.log(addr);
@@ -179,6 +187,8 @@
             // console.log(addr);
             // console.log(myLatLng);
             let marker;
+
+            
             if ((maskleft + childMasksLeft) / 1000 > 0.5) {
                 marker = new google.maps.Marker({
                     position: myLatlng,
@@ -189,7 +199,9 @@
                     },
                     title: '口罩很多!'
                 });
-            } else if ((maskleft + childMasksLeft) / 1000 < 0.5 && (maskleft + childMasksLeft) / 1000 > 0) {
+            } else if ((maskleft + childMasksLeft) / 1000 < 0.5 && (maskleft + childMasksLeft) / 1000 > 0 && more50.checked!=true) {
+
+                //console.log(more50.value);
                 marker = new google.maps.Marker({
                     position: myLatlng,
                     map: map,
@@ -199,7 +211,11 @@
                     },
                     title: '口罩快沒有了!'
                 });
-            } else {
+               
+            } 
+            
+                               
+            else  {
                 marker = new google.maps.Marker({
                     position: myLatlng,
                     map: map,
@@ -209,6 +225,9 @@
                     },
                     title: '來晚了!'
                 });
+                if(more50.checked==true||soldout.checked==true){
+                    marker.setMap(null);
+                }
 
             }
             marker.addListener('click', function () {
@@ -226,7 +245,7 @@
         function find_a(area_name) {
             var CName = '';
             var storname = '';
-            var aaa='';
+            var aaa = '';
             //console.log('HI');
             initMap();
 
@@ -240,7 +259,7 @@
                     storname += x.properties.name[i];
 
                 }
-                
+
                 if (x.properties.country == area_name) {
 
                     getaddr(x);
@@ -248,17 +267,15 @@
 
                 } else if (storname == area_name) {
                     getaddr(x);
-                } 
-                 else if (aaa == area_name) {
+                } else if (aaa == area_name) {
                     getaddr(x);
-                } 
-                else {
+                } else {
                     //alert('輸入資訊不存在或錯誤')
-                    console.log(1);
+                    // console.log(false);
 
                 }
-                aaa='';
-                storname='';
+                aaa = '';
+                storname = '';
 
             });
         }
@@ -266,7 +283,7 @@
         function input_area() {
             let inputaaa = input.value;
             find_a(inputaaa);
-            
+
         }
     </script>
 
