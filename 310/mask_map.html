@@ -21,10 +21,11 @@
             width: 20%;
             height: 100%;
             font-size: large;
-            
+
 
         }
-        .btn_area{
+
+        .btn_area {
             overflow: auto;
             height: 80%;
         }
@@ -89,7 +90,7 @@
         btn_input.addEventListener('click', input_area);
 
         var btn_area = document.getElementsByClassName('btn_area')[0];
-        var country = ['新北市', '臺北市', '桃園市', '基隆市', '新竹市', '宜蘭縣', '新竹縣', '臺中市', '苗栗縣', '彰化縣', '南投縣', '雲林縣', '台南市', '高雄市',
+        var country = ['新北市', '臺北市', '桃園市', '基隆市', '新竹市', '宜蘭縣', '新竹縣', '臺中市', '苗栗縣', '彰化縣', '南投縣', '雲林縣', '臺南市', '高雄市',
             '嘉義市', '臺東縣', '花蓮縣', '澎湖縣', '金門縣', '連江縣'
         ];
 
@@ -114,7 +115,7 @@
         var childMasksLeft;
 
         function initMap() {
-            alert('資料不足!! 目前僅能點擊新北市,輸入新北市或新北市八里區衛生所 ')
+            //alert('資料不足!! 目前僅能點擊新北市,輸入新北市或新北市八里區衛生所 ')
             map = new google.maps.Map(document.getElementById('map'), {
                 center: {
                     lat: 23.757227,
@@ -122,7 +123,7 @@
                 },
                 zoom: 7
             });
-           
+
 
         }
         var mask = [];
@@ -138,7 +139,7 @@
                 // getaddr(mask[1])
 
                 mask.forEach(x => {
-                    id.push(x.properties.id);
+
 
                     //console.log(x);
                     getaddr(x);
@@ -152,8 +153,9 @@
 
         //顯示位子
         function getaddr(x) {
+            console.log(2);
             //console.log(x);
-            var addr = x.geometry["coordinates"]
+            var addr = x.geometry["coordinates"];
             // console.log(addr);
             maskleft = x.properties.mask_adult;
             childMasksLeft = x.properties.mask_child;
@@ -171,14 +173,14 @@
                 `<h2 class="h2">成人口罩:${x.properties.masksLeft}個<h2>` +
                 `<h2 class="h2">兒童口罩:${x.properties.childMasksLeft}個<h2>` +
                 `</div>`;
-                var infowindow = new google.maps.InfoWindow({
+            var infowindow = new google.maps.InfoWindow({
                 content: contentString
             });
             // console.log(addr);
             // console.log(myLatLng);
             let marker;
             if ((maskleft + childMasksLeft) / 1000 > 0.5) {
-                 marker = new google.maps.Marker({
+                marker = new google.maps.Marker({
                     position: myLatlng,
                     map: map,
                     icon: {
@@ -188,7 +190,7 @@
                     title: '口罩很多!'
                 });
             } else if ((maskleft + childMasksLeft) / 1000 < 0.5 && (maskleft + childMasksLeft) / 1000 > 0) {
-                 marker = new google.maps.Marker({
+                marker = new google.maps.Marker({
                     position: myLatlng,
                     map: map,
                     icon: {
@@ -198,7 +200,7 @@
                     title: '口罩快沒有了!'
                 });
             } else {
-                 marker = new google.maps.Marker({
+                marker = new google.maps.Marker({
                     position: myLatlng,
                     map: map,
                     icon: {
@@ -209,83 +211,54 @@
                 });
 
             }
-             marker.addListener('click', function () {
+            marker.addListener('click', function () {
                 infowindow.open(map, marker);
             });
 
         }
 
         //建立新json
-        var json = [];
-        var json = [{
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [121.399996, 25.147051]
-            },
-            "properties": {
-                "id": "2331230018",
-                "name": "新北市八里區衛生所",
-                "phone": "(02)26102137",
-                "address": "新北市八里區舊城路16號",
-                "masksLeft": 1,
-                "childMasksLeft": 210,
-                "opensOn": [
-                    "休息",
-                    "上午、下午",
-                    "上午、下午",
-                    "上午",
-                    "上午、下午",
-                    "上午",
-                    "休息"
-                ],
-                "note": "109年民族掃墓節連續假期(4/2~4/5)休診",
-                "updatedAt": "2020-03-29T06:32:45.000Z"
-            }
-        }]
+
         //json 塞入資訊
-        function find_area() {
-             console.log(123);
-            id.forEach((x) => {
-                $.ajax({
-                    type: "Get",
-                    url: `https://findmasks.herokuapp.com/places/${x}`,
-                    data: "data",
-                    dataType: "JSON",
-                    success: function (response) {
-                        let x = response;
-                        json.push(x);
 
-                    }
-                });
-            });
-
-        }
         //篩選出地區
+
         function find_a(area_name) {
+            var CName = '';
+            var storname = '';
+            var aaa='';
             //console.log('HI');
             initMap();
 
             let ub = area_name;
 
-            let CName = '';
-            let storname = '';
-            json.forEach((x) => {
-                for (let i = 0; i < area_name.length; i++) {
-                    CName += x.properties.address[i];
-                    storname += x.properties.name[i];
-                }
 
-                if (CName == area_name) {
+            mask.forEach((x) => {
+                CName = x.properties.country;
+                for (let i = 0; i < area_name.length; i++) {
+                    aaa += x.properties.address[i];
+                    storname += x.properties.name[i];
+
+                }
+                
+                if (x.properties.country == area_name) {
 
                     getaddr(x);
+
 
                 } else if (storname == area_name) {
                     getaddr(x);
-                } else {
-                    alert('輸入資訊不存在或錯誤')
-                }
+                } 
+                 else if (aaa == area_name) {
+                    getaddr(x);
+                } 
+                else {
+                    //alert('輸入資訊不存在或錯誤')
+                    console.log(1);
 
+                }
+                aaa='';
+                storname='';
 
             });
         }
