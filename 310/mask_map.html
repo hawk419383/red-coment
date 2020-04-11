@@ -8,23 +8,43 @@
     <style>
         /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
-        body{
+        body {
             display: flex;
         }
+
         #map {
             width: 80%;
             height: 100%;
         }
-        #search{
+
+        #search {
             width: 20%;
             height: 100%;
             font-size: large;
-            
+
         }
-        .con{
+
+        .con {
             width: 100%;
-            
-            padding: 20px 5px;
+            display: flex;
+            flex-wrap: wrap;
+            padding: 10px 5px;
+        }
+
+        label {
+            width: 30%;
+            padding: 10px 0;
+
+        }
+
+        input {
+            width: 40%;
+            padding: 10px 0;
+        }
+
+        #btn_search {
+            width: 20%;
+
         }
 
         /* Optional: Makes the sample page fill the window. */
@@ -34,27 +54,56 @@
             margin: 0;
             padding: 0;
         }
-        
+
+        #c_area:hover {
+            background-color: #f38841;
+
+        }
     </style>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    
-    <div  id="search">
+
+    <div id="search">
         <div class="con">
-        <label for="">輸入地區</label>
-        <input type="text" >
-        <button form="input" ></button>
-    </div>
+            <label for="">輸入地區或店名:</label>
+            <input type="text" value="">
+            <button form="input" id="btn_search" >確認</button>
+        </div>
 
     </div>
-    <div  id="map"></div>
+    <div id="map"></div>
     <script>
-        var btn = document.createElement('button');
-        var search = document.getElementById('search');
+        //選單
+        var input = document.getElementsByTagName('input')[0];
+        
+        var btn_input = document.getElementById('btn_search');
+        btn_input.addEventListener('click',input_area);
 
+        var search = document.getElementById('search');
+        var country = ['新北市', '臺北市', '桃園市', '基隆市', '新竹市', '宜蘭縣', '新竹縣', '臺中市', '苗栗縣', '彰化縣', '南投縣', '雲林縣', '台南市', '高雄市',
+            '嘉義市', '臺東縣', '花蓮縣', '澎湖縣', '金門縣', '連江縣'
+        ];
+
+        country.forEach((x) => {
+            let btn = document.createElement('button');
+            btn.innerText = x;
+            $(btn).attr('id', 'c_area');
+            $(btn).css('width', '100%');
+            $(btn).css('font-size', '1rem');
+            $(btn).css('padding', '5px');
+
+            btn.addEventListener('click', () => {
+                find_a(`${btn.innerText}`)
+            });
+            search.appendChild(btn);
+
+        });
+
+
+        //地圖
         var maskleft;
         var childMasksLeft;
 
@@ -68,26 +117,31 @@
             });
         }
         var mask = [];
+        var id = [];
         $.ajax({
             type: "Get",
             url: "https://maskmap.azurewebsites.net/api/mask/getmaskstock",
             data: "data",
             dataType: "JSON",
             success: function (response) {
+
                 mask = response["features"];
-               // getaddr(mask[1])
+                // getaddr(mask[1])
 
                 mask.forEach(x => {
+                    id.push(x.properties.id);
+
                     //console.log(x);
                     getaddr(x);
 
                 })
-
+                //console.log("hi")
+                 //find_area();
             }
 
         });
 
-
+//顯示位子
         function getaddr(x) {
             //console.log(x);
             var addr = x.geometry["coordinates"]
@@ -101,43 +155,126 @@
 
             // console.log(addr);
             // console.log(myLatLng);
-            if((maskleft+childMasksLeft)/1000 >0.5 ){
-            let marker = new google.maps.Marker({
-                position: myLatlng,
-                map: map,
-                icon: {
-                    url: "O.png",
-                    scaledSize: new google.maps.Size(30, 30),
-                },
-                title: '口罩很多!'
-            });
-        }
-          else  if((maskleft+childMasksLeft)/1000<0.5&& (maskleft+childMasksLeft)/1000>0 ){
-            let marker = new google.maps.Marker({
-                position: myLatlng,
-                map: map,
-                icon: {
-                    url: "no.png",
-                    scaledSize: new google.maps.Size(20, 20),
-                },
-                title: '還有口罩!'
-            });
-        }
-        else{
-            let marker = new google.maps.Marker({
-                position: myLatlng,
-                map: map,
-                icon: {
-                    url: "X.png",
-                    scaledSize: new google.maps.Size(20, 20),
-                },
-                title: '來晚了!'
-            });
+            if ((maskleft + childMasksLeft) / 1000 > 0.5) {
+                let marker = new google.maps.Marker({
+                    position: myLatlng,
+                    map: map,
+                    icon: {
+                        url: "O.png",
+                        scaledSize: new google.maps.Size(30, 30),
+                    },
+                    title: '口罩很多!'
+                });
+            } else if ((maskleft + childMasksLeft) / 1000 < 0.5 && (maskleft + childMasksLeft) / 1000 > 0) {
+                let marker = new google.maps.Marker({
+                    position: myLatlng,
+                    map: map,
+                    icon: {
+                        url: "no.png",
+                        scaledSize: new google.maps.Size(20, 20),
+                    },
+                    title: '還有口罩!'
+                });
+            } else {
+                let marker = new google.maps.Marker({
+                    position: myLatlng,
+                    map: map,
+                    icon: {
+                        url: "X.png",
+                        scaledSize: new google.maps.Size(20, 20),
+                    },
+                    title: '來晚了!'
+                });
+
+            }
 
         }
 
+        //建立新json
+        //var json = [];
+        var json = [{
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [121.399996, 25.147051]
+            },
+            "properties": {
+                "id": "2331230018",
+                "name": "新北市八里區衛生所",
+                "phone": "(02)26102137",
+                "address": "新北市八里區舊城路16號",
+                "masksLeft": 1,
+                "childMasksLeft": 210,
+                "opensOn": [
+                    "休息",
+                    "上午、下午",
+                    "上午、下午",
+                    "上午",
+                    "上午、下午",
+                    "上午",
+                    "休息"
+                ],
+                "note": "109年民族掃墓節連續假期(4/2~4/5)休診",
+                "updatedAt": "2020-03-29T06:32:45.000Z"
+            }
+        }]
+        //json 塞入資訊
+        function find_area() {
+
+            id.forEach((x) => {
+                $.ajax({
+                    type: "Get",
+                    url: `https://findmasks.herokuapp.com/places/${x}`,
+                    data: "data",
+                    dataType: "JSON",
+                    success: function (response) {
+                        let x = response;
+                        json.push(x);
+
+                    }
+                });
+            });
+
+        }
+        //篩選出地區
+        function find_a(area_name) {
+            //console.log('HI');
+            initMap();
+
+            let ub =area_name;
+            
+            let CName = '';
+            let storname = '';
+            json.forEach((x) => {
+                for (let i = 0; i <area_name.length ; i++) {
+                    CName += x.properties.address[i];
+                    storname += x.properties.name[i];
+                }
+                
+                if (CName == area_name) {
+                     
+                    getaddr(x);
+                   
+                }
+                else if( storname == area_name){
+                    getaddr(x);
+                } 
+                else{
+                    alert('輸入資訊不存在或錯誤')
+                }
+
+
+            });
         }
 
+    function input_area(){
+        
+        
+        let inputaaa= input.innerText;
+        find_a(inputaaa);
+
+        
+    }
     </script>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlKWP4uWjQIR3WDAWLAu6rUhBfc3_ppag&callback=initMap"

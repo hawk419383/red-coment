@@ -51,7 +51,8 @@
             display: flex;
             justify-content: center;
             flex-direction: column;
-        }
+            
+                    }
 
         .gun_card:hover article {
             transform: scale(1);
@@ -86,7 +87,7 @@
 
             </div>
             <article class=" w-100">
-                <h3></h3>
+                <h2></h2>
                 <h3></h3>
                 <p></p>
             </article>
@@ -156,7 +157,7 @@
                 {
                     "code": "RX-0",
                     "GudamName": " UNICORN[3] PHENEX",
-                    "Pic_Url": "https://hinetcdn.waca.ec/uploads/shops/506/products/b0/b0e9988d1241eade9617606e73a55079.jpg",
+                    "Pic_Url": "https://hinetcdn.waca.ec/uploads/shops/506/products/18/181df9b35c782d335be0453f169a575d.jpg",
                     "Price": "NT:3080"
                 },
                 {
@@ -216,7 +217,7 @@
                 {
                     "code": "XXXG-00W0",
                     "GudamName": " WING EW ",
-                    "Pic_Url": "https://hinetcdn.waca.ec/uploads/shops/506/products/46/4621ea014ddbbd5d320a382845b9a911.jpg",
+                    "Pic_Url": "https://farm5.staticflickr.com/4389/36868380756_3a05338d72_z.jpg",
                     "Price": "NT:980"
                 },
                 {
@@ -255,11 +256,12 @@
             let img = document.createElement('img');
             let p = cloneContent.querySelectorAll('p')
             let h3 = cloneContent.querySelectorAll('h3')
+            let h2 = cloneContent.querySelectorAll('h2')
             //console.log(pic);
             pic[1].setAttribute('style', `background-image: url('${x[2]}')`)
 
-            h3[0].textContent = x[0];
-            h3[1].textContent = x[1];
+            h2[0].textContent = x[0];
+            h3[0].textContent = x[1];
             p[0].textContent = x[3]
 
             //pic.appendChild(img);
