@@ -65,6 +65,20 @@
             background-color: #f38841;
 
         }
+
+        #checkbox {
+            width: 10%;
+        }
+
+        .check {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .ggg {
+            width: 100%;
+        }
     </style>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -74,15 +88,21 @@
 
     <div id="search">
         <div class="con">
-            <label for="">輸入地區或店名:</label>
+            <label for="">輸入地區或藥局名稱:</label>
             <input type="text" value="">
             <button form="input" id="btn_search">確認</button>
         </div>
         <div class="check">
-            <input type="checkbox" class="morethan50p" value="">
-            <label for="">只顯示庫存大於50%</label>
-            <input type="checkbox" class="soldout" value="">
-            <label for="">不顯示缺貨</label>
+            <div class="ggg">
+                <input type="checkbox" class="morethan50p" id="checkbox" value="">
+                <label for="">只顯示庫存大於50%</label>
+            </div>
+            <div class="ggg">
+                <input type="checkbox" class="soldout" id="checkbox" value="">
+                <label for="">不顯示缺貨</label>
+            </div>
+
+
         </div>
         <div class="btn_area"></div>
 
@@ -99,7 +119,7 @@
         var country = ['新北市', '臺北市', '桃園市', '基隆市', '新竹市', '宜蘭縣', '新竹縣', '臺中市', '苗栗縣', '彰化縣', '南投縣', '雲林縣', '臺南市', '高雄市',
             '嘉義市', '臺東縣', '花蓮縣', '澎湖縣', '金門縣', '連江縣'
         ];
-
+        //縣市按鈕
         country.forEach((x) => {
             let btn = document.createElement('button');
             btn.innerText = x;
@@ -121,7 +141,24 @@
         var childMasksLeft;
         var more50 = document.getElementsByClassName('morethan50p')[0];
         var soldout = document.getElementsByClassName('soldout')[0];
+        var map, infoWindow;
 
+
+        var mask = [];
+        var id = [];
+
+        window.onload = function () {
+            initMap();
+            read_json();
+
+        }
+
+      
+        $(".morethan50p , .soldout").change(function () {
+          initMap()
+          read_json();
+        });
+      
         function initMap() {
             //alert('資料不足!! 目前僅能點擊新北市,輸入新北市或新北市八里區衛生所 ')
             map = new google.maps.Map(document.getElementById('map'), {
@@ -134,31 +171,31 @@
 
 
         }
-        var mask = [];
-        var id = [];
-        $.ajax({
-            type: "Get",
-            url: "https://raw.githubusercontent.com/kiang/pharmacies/master/json/points.json",
-            data: "data",
-            dataType: "JSON",
-            success: function (response) {
 
-                mask = response["features"];
-                // getaddr(mask[1])
+        function read_json() {
+            $.ajax({
+                type: "Get",
+                url: "https://raw.githubusercontent.com/kiang/pharmacies/master/json/points.json",
+                data: "data",
+                dataType: "JSON",
+                success: function (response) {
 
-                mask.forEach(x => {
+                    mask = response["features"];
+                    // getaddr(mask[1])
+
+                    mask.forEach(x => {
 
 
-                    //console.log(x);
-                    getaddr(x);
+                        //console.log(x);
+                        getaddr(x);
 
-                })
-                //console.log("hi")
-                //find_area();
-            }
+                    })
+                    //console.log("hi")
+                    //find_area();
+                }
 
-        });
-
+            });
+        }
         //顯示位子
         function getaddr(x) {
             // console.log(2);
@@ -181,14 +218,14 @@
                 `<h2 class="h2">成人口罩:${x.properties.mask_adult}個<h2>` +
                 `<h2 class="h2">兒童口罩:${x.properties.mask_child}個<h2>` +
                 `</div>`;
-            var infowindow = new google.maps.InfoWindow({
+            let infowindow = new google.maps.InfoWindow({
                 content: contentString
             });
             // console.log(addr);
             // console.log(myLatLng);
             let marker;
 
-            
+
             if ((maskleft + childMasksLeft) / 1000 > 0.5) {
                 marker = new google.maps.Marker({
                     position: myLatlng,
@@ -199,7 +236,8 @@
                     },
                     title: '口罩很多!'
                 });
-            } else if ((maskleft + childMasksLeft) / 1000 < 0.5 && (maskleft + childMasksLeft) / 1000 > 0 && more50.checked!=true) {
+            } else if ((maskleft + childMasksLeft) / 1000 < 0.5 && (maskleft + childMasksLeft) / 1000 > 0 && more50
+                .checked != true) {
 
                 //console.log(more50.value);
                 marker = new google.maps.Marker({
@@ -211,11 +249,8 @@
                     },
                     title: '口罩快沒有了!'
                 });
-               
-            } 
-            
-                               
-            else  {
+
+            } else {
                 marker = new google.maps.Marker({
                     position: myLatlng,
                     map: map,
@@ -225,7 +260,7 @@
                     },
                     title: '來晚了!'
                 });
-                if(more50.checked==true||soldout.checked==true){
+                if (more50.checked == true || soldout.checked == true) {
                     marker.setMap(null);
                 }
 
@@ -248,9 +283,9 @@
             var aaa = '';
             //console.log('HI');
             initMap();
-
+           //checked();
             let ub = area_name;
-
+            
 
             mask.forEach((x) => {
                 CName = x.properties.country;
