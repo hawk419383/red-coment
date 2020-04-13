@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        th,
+        tr,
+        td {
+            border: 1px solid #000000;
+            padding: 5px;
+            margin: 3px;
+            width: auto;
+
+        }
+
+        thead {
+            background-color: #ff1b00;
+        }
+
+
+
+        tr:nth-child(even) {
+            background-color: #00ccff;
+        }
+
+        img {
+            width: 40%;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div id="msg"></div>
+    <script>
+        var ipad;
+        var array;
+        var body = document.getElementsByTagName('body')[0];
+        var table = document.createElement('table');
+
+        window.onload = function () {
+
+            body.appendChild(table);
+            let xhr = new XMLHttpRequest;
+
+            xhr.open("Get", "http://127.0.0.1:5501/Hawk-labs/Hawk-lee-labs/Array/ipad.json");
+            xhr.send();
+            /* xhr.onload = function () {
+                 ipad = JSON.parse(this.responseText);
+                 array = Object.keys(ipad[0]);
+                 addThead();
+                 addBody();
+             }*/
+
+            xhr.onload = function () {
+                console.log(xhr.readyState);
+                console.log(xhr.response);
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    msg.textContnt = this.responseText;
+                    ipad = JSON.parse(this.responseText);
+                    array = Object.keys(ipad[0]);
+                    addThead();
+                    addBody();
+
+                } else {
+                    msg.textContnt = '發生錯誤,HTTP response代碼' + xhr.status;
+                    body.innerHTML = msg.textContnt;
+                }
+
+            }
+            ipad = [{
+                    "sku": "MW762",
+                    "price": 10900,
+                    "storage": "32GB",
+                    "description": "10.2 吋 iPad Wi-Fi 機型 32GB - 金色",
+                    "picture": "ipad_gold.png"
+                },
+                {
+                    "sku": "MW792",
+                    "price": 13900,
+                    "storage": "128GB",
+                    "description": "10.2 吋 iPad Wi-Fi 機型 128GB - 金色",
+                    "picture": "ipad_gold.png"
+                },
+                {
+                    "sku": "MW742",
+                    "price": 10900,
+                    "storage": "32GB",
+                    "description": "10.2 吋 iPad Wi-Fi 機型 32GB - 太空灰色",
+                    "picture": "ipad_space.png"
+                },
+                {
+                    "sku": "MW772",
+                    "price": 13900,
+                    "storage": "128GB",
+                    "description": "10.2 吋 iPad Wi-Fi 機型 128GB - 太空灰色",
+                    "picture": "ipad_space.png"
+                },
+                {
+                    "sku": "MW752",
+                    "price": 10900,
+                    "storage": "32GB",
+                    "description": "10.2 吋 iPad Wi-Fi 機型 32GB - 銀色",
+                    "picture": "ipad_silver.png"
+                },
+                {
+                    "sku": "MW782",
+                    "price": 13900,
+                    "storage": "128GB",
+                    "description": "10.2 吋 iPad Wi-Fi 機型 128GB - 銀色",
+                    "picture": "ipad_silver.png"
+                },
+                {
+                    "sku": "MW6D2",
+                    "price": 15400,
+                    "storage": "32GB",
+                    "description": "10.2 吋 iPad Wi-Fi + 行動網路機型 32GB - 金色",
+                    "picture": "ipad_gold.png"
+                },
+                {
+                    "sku": "MW6G2",
+                    "price": 18400,
+                    "storage": "128GB",
+                    "description": "10.2 吋 iPad Wi-Fi + 行動網路機型 128GB - 金色",
+                    "picture": "ipad_gold.png"
+                },
+                {
+                    "sku": "MW6A2",
+                    "price": 15400,
+                    "storage": "32GB",
+                    "description": "10.2 吋 iPad Wi-Fi + 行動網路機型 32GB - 太空灰色",
+                    "picture": "ipad_space.png"
+                },
+                {
+                    "sku": "MW6E2",
+                    "price": 18400,
+                    "storage": "128GB",
+                    "description": "10.2 吋 iPad Wi-Fi + 行動網路機型 128GB - 太空灰色",
+                    "picture": "ipad_space.png"
+                },
+                {
+                    "sku": "MW6C2",
+                    "price": 15400,
+                    "storage": "32GB",
+                    "description": "10.2 吋 iPad Wi-Fi + 行動網路機型 32GB - 銀色",
+                    "picture": "ipad_silver.png"
+                },
+                {
+                    "sku": "MW6F2",
+                    "price": 18400,
+                    "storage": "128GB",
+                    "description": "10.2 吋 iPad Wi-Fi + 行動網路機型 128GB - 銀色",
+                    "picture": "ipad_silver.png"
+                }
+            ]
+            array = Object.keys(ipad[0])
+            addThead();
+            addBody();
+        }
+
+
+
+        function addThead(titleArray) {
+            console.log('1233');
+            var thead = document.createElement('thead');
+            for (const i in array) {
+                var th = document.createElement('th');
+                let item = array[i];
+                th.innerHTML = item;
+                thead.appendChild(th);
+            }
+            table.appendChild(thead);
+        }
+
+        function addBody(rowArray) {
+            var tbody = document.createElement('tbody');
+
+            for (let i in ipad) {
+                var tr = document.createElement('tr');
+
+                for (const item in array) {
+                    tbody.appendChild(tr);
+                    let td = document.createElement('td');
+                    if (item == 4) {
+                        var img = document.createElement('img');
+
+                        img.setAttribute('src', `${ipad[i][array[item]]}`);
+
+                        tr.appendChild(img);
+                    } else {
+                        td.innerHTML = ipad[i][array[item]]
+
+                        tr.appendChild(td);
+                    }
+                }
+            }
+            table.appendChild(tbody);
+
+
+        }
+    </script>
+</body>
+
+</html>
