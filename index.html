@@ -159,11 +159,14 @@
 
         var information = myinfo.reverse();
         information.forEach(x => {
+            
             let cloneContent = CARD.content.cloneNode(true);
             let bpic = cloneContent.querySelectorAll('div')[0];
             let h1 = cloneContent.querySelectorAll('h1')[0];
+            let a = cloneContent.querySelectorAll('a')[0];
             bpic.setAttribute('style', `background-image: url('${x.pic}')`);
             h1.innerHTML = x.homeworkname;
+            a.href = x.url;
             myinformation.appendChild(cloneContent);
 
         })
