@@ -30,16 +30,13 @@
         }
 
         article {
-            color: rgb(228, 210, 48);
+
 
             height: 100%;
-            background-color: rgba(0, 0, 0, .8);
+            background-color: rgba(0, 0, 0, .7);
             text-align: center;
-            position: absolute;
-            padding-top: 30%;
-            opacity: 0;
-            transform: scale(0);
-            transition: .5s;
+
+
         }
 
         .gun_card {
@@ -51,21 +48,35 @@
             display: flex;
             justify-content: center;
             flex-direction: column;
-            
-                    }
 
-        .gun_card:hover article {
+        }
+
+        .gun_card:hover button {
             transform: scale(1);
             opacity: 1;
-            
+
         }
 
-        h3 {
+        button {
+            color: rgb(228, 210, 48);
             font-size: 1.5rem;
+            background-color: rgba(0, 0, 0, .5);
+            border: none;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+
+            opacity: 0;
+            transform: scale(.1);
+            transition: .5s;
         }
 
-        p {
-            font-size: 1.5rem;
+        button h2 {
+            font-size: 3rem;
+        }
+
+        button h3 {
+            font-size: 2rem;
         }
     </style>
 </head>
@@ -81,31 +92,47 @@
 
 
     <template id="gundam_card">
-        <div class="gun_card  col-md-3 col-6  mx-auto">
+        <div class="gun_card  col-12 col-md-6 col-xl-3  mx-auto">
             <div class=" pic w-100">
 
 
             </div>
-            <article class=" w-100">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                 <h2></h2>
                 <h3></h3>
                 <p></p>
-            </article>
+            </button>
+
         </div>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <article>
+                            <p></p>
+                            <p></p>
+                            <p></p>
+                        </article>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </template>
 
-    <template id="modal">
-        <div id="id01" class="w3-modal">
-            <div class="w3-modal-content">
-              <div class="w3-container">
-                <span onclick="document.getElementById('id01').style.display='none'"
-                class="w3-button w3-display-topright">&times;</span>
-                <p>Some text in the Modal..</p>
-                <p>Some text in the Modal..</p>
-              </div>
-            </div>
-          </div>
-    </template>
+
+
     <script>
         var row = document.getElementsByClassName('row')[0];
         console.log(row);
@@ -135,19 +162,28 @@
                     "code": "MS-06S",
                     "GudamName": " ZAKU II",
                     "Pic_Url": "https://ct.yimg.com/xd/api/res/1.2/ratzXotpsZ36Gz4_L3n8nw--/YXBwaWQ9eXR3YXVjdGlvbnNlcnZpY2U7aD03NTg7cT04NTtyb3RhdGU9YXV0bzt3PTEyMDA-/https://s.yimg.com/ob/image/6986fd31-3492-4c9f-ae90-13fa1ae84020.jpg",
-                    "Price": "NT:880"
+                    "Price": "NT:880",
+                    "attack":"400",
+                    "SP":"200",
+                    "HP":"500"
                 },
                 {
                     "code": "MSN-06S",
                     "GudamName": " SINANJU",
                     "Pic_Url": "https://hinetcdn.waca.ec/uploads/shops/506/products/70/704f8ff887c13e5e94fc6b7d4ca924b4.jpg",
-                    "Price": "NT:1950"
+                    "Price": "NT:1950",
+                     "attack":"400",
+                    "SP":"200",
+                    "HP":"500"
                 },
                 {
                     "code": "MS-06R",
                     "GudamName": " PSYCHO ZAKU",
                     "Pic_Url": "https://ct.yimg.com/xd/api/res/1.2/pmOkjc4a8rxn_KFK4y5f9w--/YXBwaWQ9eXR3YXVjdGlvbnNlcnZpY2U7aD00OTk7cT04NTtyb3RhdGU9YXV0bzt3PTgwMA--/https://s.yimg.com/ob/image/c4c85d00-9576-4c6a-b914-3615c169f1f8.jpg",
-                    "Price": "NT:699"
+                    "Price": "NT:699",
+                     "attack":"400",
+                    "SP":"200",
+                    "HP":"500"
                 },
                 {
                     "code": "RX-0",
@@ -159,13 +195,19 @@
                     "code": "RX-78-2",
                     "GudamName": " GUNDAM",
                     "Pic_Url": "https://www.myacg.com.tw/goods_images/goods_pic1_2820945_20151010204209.jpg",
-                    "Price": "NT:1150"
+                    "Price": "NT:1150",
+                     "attack":"400",
+                    "SP":"200",
+                    "HP":"500"
                 },
                 {
                     "code": "FA-78",
                     "GudamName": " FULL ARMOR GUNDAM",
                     "Pic_Url": "https://hinetcdn.waca.ec/uploads/shops/506/products/77/77f6324e6b4ab4f9017919400374ea8b.jpg",
-                    "Price": "NT:1799"
+                    "Price": "NT:1799",
+                     "attack":"400",
+                    "SP":"200",
+                    "HP":"500"
                 },
                 {
                     "code": "RX-0",
@@ -177,19 +219,28 @@
                     "code": "GAT-X105E",
                     "GudamName": " STRIKE NOIR",
                     "Pic_Url": "https://hinetcdn.waca.ec/uploads/shops/506/products/51/51ed37753e86dabca36f555d9acdc15e.jpg",
-                    "Price": "NT:1150"
+                    "Price": "NT:1150",
+                     "attack":"400",
+                    "SP":"200",
+                    "HP":"500"
                 },
                 {
                     "code": "ZGMF-X10A",
                     "GudamName": " FREEDOM",
                     "Pic_Url": "https://hinetcdn.waca.ec/uploads/shops/506/products/46/46039ec6729d227727fec22228d3c050.jpg",
-                    "Price": "NT:1150"
+                    "Price": "NT:1150",
+                     "attack":"400",
+                    "SP":"200",
+                    "HP":"500"
                 },
                 {
                     "code": "ZGMF-X19A",
                     "GudamName": " INFINTE JUSTICE",
                     "Pic_Url": "https://hinetcdn.waca.ec/uploads/shops/506/products/7e/7e57dc40567ff956bdf4043a42204c7c.jpg",
-                    "Price": "NT:1250"
+                    "Price": "NT:1250",
+                     "attack":"400",
+                    "SP":"200",
+                    "HP":"500"
                 },
                 {
                     "code": "GNT-0000",
@@ -201,55 +252,82 @@
                     "code": "GN-0000",
                     "GudamName": " OO RAISER",
                     "Pic_Url": "https://hinetcdn.waca.ec/uploads/shops/506/products/c2/c2a57e9153a7644e5d35f73d5606b4c5.jpg",
-                    "Price": "NT:1150"
+                    "Price": "NT:1150",
+                     "attack":"400",
+                    "SP":"200",
+                    "HP":"500"
                 },
                 {
                     "code": "F91",
                     "GudamName": "F91 GUNDAM",
                     "Pic_Url": "https://hinetcdn.waca.ec/uploads/shops/506/products/e3/e3514df162b4dd29858b00d6fda2e1f1.jpg",
-                    "Price": "NT:999"
+                    "Price": "NT:999",
+                     "attack":"400",
+                    "SP":"200",
+                    "HP":"500"
                 },
                 {
                     "code": "ZGMF-X09A",
                     "GudamName": " JUSTICE",
                     "Pic_Url": "https://hinetcdn.waca.ec/uploads/shops/2303/products/40/407e1031f31cf713e1e8bfb73cbf298e.jpg",
-                    "Price": "NT:1230"
+                    "Price": "NT:1230",
+                     "attack":"400",
+                    "SP":"200",
+                    "HP":"500"
                 },
                 {
                     "code": "ZGMF-X13A",
                     "GudamName": " PROVIDENCE ",
                     "Pic_Url": "https://hinetcdn.waca.ec/uploads/shops/506/products/02/025bf8259a4e2fa313d5c8884085ee64.jpg",
-                    "Price": "NT:1285"
+                    "Price": "NT:1285",
+                     "attack":"400",
+                    "SP":"200",
+                    "HP":"500"
                 },
                 {
                     "code": "RX-0",
                     "GudamName": "UNICORN[2] BANSHEE NORN",
                     "Pic_Url": "https://hinetcdn.waca.ec/uploads/shops/506/products/4b/4bb9e1dd2346820fb30f4fae5a22363a.jpg",
-                    "Price": "NT:3000"
+                    "Price": "NT:3000",
+                     "attack":"400",
+                    "SP":"200",
+                    "HP":"500"
                 },
                 {
                     "code": "XXXG-00W0",
                     "GudamName": " WING EW ",
                     "Pic_Url": "https://farm5.staticflickr.com/4389/36868380756_3a05338d72_z.jpg",
-                    "Price": "NT:980"
+                    "Price": "NT:980",
+                     "attack":"400",
+                    "SP":"200",
+                    "HP":"500"
                 },
                 {
                     "code": "ZGMF-X42S",
                     "GudamName": " DENSTINY",
                     "Pic_Url": "https://hinetcdn.waca.ec/uploads/shops/506/products/e0/e0c38e25c87371db4582336c47f5704a.jpg",
-                    "Price": "NT:1750"
+                    "Price": "NT:1750",
+                     "attack":"400",
+                    "SP":"200",
+                    "HP":"500"
                 },
                 {
                     "code": "ZGMF-X20A",
                     "GudamName": " STRIKE FREEDOM",
                     "Pic_Url": "https://hinetcdn.waca.ec/uploads/shops/506/products/62/629282476175e8442b6ca063650df584.jpg",
-                    "Price": "NT:1799"
+                    "Price": "NT:1799",
+                     "attack":"400",
+                    "SP":"200",
+                    "HP":"500"
                 },
                 {
                     "code": "GN-002",
                     "GudamName": " DYNAMES",
                     "Pic_Url": "https://hinetcdn.waca.ec/uploads/shops/506/products/b6/b6afaba7a2bcfaccf6fc81ae237f6948.jpg",
-                    "Price": "NT:1160"
+                    "Price": "NT:1160",
+                     "attack":"400",
+                    "SP":"200",
+                    "HP":"500"
                 }
 
 
@@ -265,17 +343,32 @@
             let gundam_card = $g('#gundam_card');
             let cloneContent = gundam_card.content.cloneNode(true);
             //console.log(cloneContent);
-            let pic = cloneContent.querySelectorAll('div');
+            let pic = cloneContent.querySelectorAll('div')[1];
             let img = document.createElement('img');
             let p = cloneContent.querySelectorAll('p')
             let h3 = cloneContent.querySelectorAll('h3')
             let h2 = cloneContent.querySelectorAll('h2')
-            //console.log(pic);
-            pic[1].setAttribute('style', `background-image: url('${x[2]}')`)
-
+            let button = cloneContent.querySelectorAll('button')[0];
+            pic.setAttribute('style', `background-image: url('${x[2]}')`);
             h2[0].textContent = x[0];
             h3[0].textContent = x[1];
             p[0].textContent = x[3]
+            //console.log(pic);
+            button.setAttribute("data-target", `#${x[0]}`)
+            let  modalfade = cloneContent.querySelectorAll('.modal')[0];
+            let modaltitle = cloneContent.querySelectorAll('.modal-title')[0];
+            modalfade.setAttribute('id',`${x[0]}`)
+            modaltitle.innerHTML = x[0] +x[1];
+            
+            let modalbody = cloneContent.querySelectorAll('article')[0];
+            let p1 = cloneContent.querySelectorAll('p')[0];
+            let p2 = cloneContent.querySelectorAll('p')[1];
+            let p3 = cloneContent.querySelectorAll('p')[2];
+           
+            p1.innerHTML =`ATTACK:${x[4]}`
+            p2.innerHTML =`SP:${x[5]}`
+            p3.innerHTML =`HP:${x[6]}`
+            modalbody.appendChild(p1,p2,p3);
 
             //pic.appendChild(img);
 

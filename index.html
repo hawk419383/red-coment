@@ -13,9 +13,32 @@
     <title>Hawk's World!</title>
 
     <style>
+        html{
+            background-color: rgb(23, 23, 94);
+        }
         body {
-            background-color: rgb(23, 23, 94)ff;
+            
 
+        }
+        .container2{
+            width: 100%;
+            background-color: rgb(23, 23, 94);
+            margin:auto ;
+        }
+        .container2 h1{
+            background-color: rgb(23, 23, 94);
+            color: #f0d121;
+            font-size: 4rem;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .aaa{
+            width: 100%;
+
+        }
+        .maincon {
+            background-color: rgb(23, 23, 94);
         }
 
         .myinfo {
@@ -23,69 +46,90 @@
             height: 50px;
 
         }
-        .pic{
+
+        .pic {
             width: 100%;
             padding-bottom: 100%;
             background-position: center center;
             background-size: cover;
             border: 2px solid #f0d121;
+            position: relative;
         }
-        #info-card{
+
+        #info-card {
             display: inline;
-            
+
         }
-        .col-12{
+
+        .col-12 {
             display: flex;
             flex-wrap: wrap;
-            
+
         }
-        .col-3{
+
+        .col-3 {
             padding: 0;
             margin-top: -10px;
             box-sizing: border-box;
-            
-            
+
+
         }
-        h1{
+
+     .pic h1 {
             background-color: black;
-            color: white;
+            color: #f0d121;
             margin-bottom: 0;
-        
-            
-          
+            font-size: 3rem;
+            text-decoration: none;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+
+
+        }
+
+    
+        a{
+            text-decoration: none;
+        }
+       .pic h1:hover {
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            background-color: white;
         }
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <div class="aaa">
+    <div class="container2 ">
+        <div class="aaa no-gutters">
+            <h1>HAWK'S WORLD</h1>
             <div class="myinfo col-6" style="background-image: url('');"></div>
-
+            
 
         </div>
     </div>
     <div class="maincon">
 
-        
-            <div class="col-12" id="col-12">
+
+        <div class="col-12" id="col-12">
 
 
-            </div>
+        </div>
 
-        
+
     </div>
 
 
     <template id="CARD">
-        
-            <a href="" class="col-3">
-                <div class="pic w-100">
-                    <h1></h1>
-                </div>
 
-            </a>
-        
+        <a href="" class="col-md-3 col-12">
+            <div class="pic w-100">
+                <h1></h1>
+            </div>
+
+        </a>
+
     </template>
 
     <script>
@@ -123,43 +167,43 @@
             },
             {
                 url: "/310/EX-CODE.html",
-                pic: "310/manufax/asset 1.png",
+                pic: "310/mainpic/ex-code.jpg",
                 homeworkname: "EX-CODE"
             },
             {
                 url: "/310/guess_number.html",
-                pic: "310/manufax/asset 1.png",
+                pic: "310/mainpic/guess.jpg",
                 homeworkname: "Guess Number"
             },
 
             {
                 url: "/310/Taiwan_Addres.html",
-                pic: "310/manufax/asset 1.png",
+                pic: "310/mainpic/schoolmap.jpg",
                 homeworkname: "Taiwan Addres"
             },
             {
 
                 url: "/310/ipad_table 2.html",
-                pic: "310/manufax/asset 1.png",
+                pic: "310/mainpic/ipad_gold.png",
                 homeworkname: "iPad Table"
             },
             {
 
                 url: "/310/GUNPLA.html",
-                pic: "310/manufax/asset 1.png",
+                pic: "310/mainpic/zaku.jpg",
                 homeworkname: "GUNPLA"
             },
             {
 
                 url: "/310/mask_map.html",
-                pic: "310/manufax/asset 1.png",
+                pic: "310/mainpic/map.jpg",
                 homeworkname: "Mask Map"
             },
         ]
 
         var information = myinfo.reverse();
         information.forEach(x => {
-            
+
             let cloneContent = CARD.content.cloneNode(true);
             let bpic = cloneContent.querySelectorAll('div')[0];
             let h1 = cloneContent.querySelectorAll('h1')[0];
