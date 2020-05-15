@@ -42,7 +42,7 @@
         var array;
         var body = document.getElementsByTagName('body')[0];
         var table = document.createElement('table');
-
+            table.setAttribute('id','table')
         window.onload = function () {
 
             body.appendChild(table);
@@ -57,22 +57,22 @@
                  addBody();
              }*/
 
-            xhr.onload = function () {
-                console.log(xhr.readyState);
-                console.log(xhr.response);
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    msg.textContnt = this.responseText;
-                    ipad = JSON.parse(this.responseText);
-                    array = Object.keys(ipad[0]);
-                    addThead();
-                    addBody();
+            /* xhr.onload = function () {
+                 console.log(xhr.readyState);
+                 console.log(xhr.response);
+                 if (xhr.readyState == 4 && xhr.status == 200) {
+                     msg.textContnt = this.responseText;
+                     ipad = JSON.parse(this.responseText);
+                     array = Object.keys(ipad[0]);
+                     addThead();
+                     addBody();
 
-                } else {
-                    msg.textContnt = '發生錯誤,HTTP response代碼' + xhr.status;
-                    body.innerHTML = msg.textContnt;
-                }
+                 } else {
+                     msg.textContnt = '發生錯誤,HTTP response代碼' + xhr.status;
+                     body.innerHTML = msg.textContnt;
+                 }
 
-            }
+             }*/
             ipad = [{
                     "sku": "MW762",
                     "price": 10900,
@@ -166,11 +166,15 @@
 
 
         function addThead(titleArray) {
-            console.log('1233');
+            // console.log('1233');
             var thead = document.createElement('thead');
             for (const i in array) {
                 var th = document.createElement('th');
+
                 let item = array[i];
+                th.addEventListener('click', () => {
+                    sort(item)
+                });
                 th.innerHTML = item;
                 thead.appendChild(th);
             }
@@ -201,6 +205,35 @@
             }
             table.appendChild(tbody);
 
+
+        }
+        
+        function sort(item) {
+            
+             console.log(item);
+            if (item == 'price'){
+            console.log(1);
+            ipad.sort(function (a, b) {
+                return a.item - b.item;
+                
+                addBody();
+            });
+            }
+            else{
+            ipad.sort(function (a, b) {
+                var itemA = a.item.toUpperCase(); // ignore upper and lowercase
+                var itemB = b.item.toUpperCase(); // ignore upper and lowercase
+                if (itemA < itemB) {
+                    return -1;
+                }
+                if (itemA > itemB) {
+                    return 1;
+                }
+
+                // items must be equal
+                return 0;
+            });
+            }
 
         }
     </script>
